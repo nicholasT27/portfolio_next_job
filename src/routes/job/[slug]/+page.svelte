@@ -3,7 +3,7 @@
 <script>
  import SvelteMarkdown from 'svelte-markdown';
  import humanize from "humanize-plus";
- import { isAuthenticated, getUserId, isLoggedIn, logOut} from '../../../util/auth.js';
+ import { isAuthenticated, getUserId, isLoggedIn} from '../../../util/auth.js';
  import { writable } from 'svelte/store';
  import { goto } from '$app/navigation';
  import { PUBLIC_BACKEND_BASE_URL } from '$env/static/public';
