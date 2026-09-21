@@ -307,8 +307,8 @@
 			{/each}
 		</div>
 
-		<div class="flex items-center justify-center">
-			<div class="flex justify-center bg-transparent px-4 py-3 sm:px-2 mt-5 w-60">
+		<div class="pagination-region flex items-center justify-center">
+				<div class="flex justify-center bg-transparent px-4 py-3 sm:px-2 mt-5 w-60">
 				<div class="sm:flex sm:items-center sm:justify-between w-fit flex justify-between">
 					<button
 						on:click={prevPage}
@@ -356,7 +356,7 @@
 						</svg>
 					</button>
 				</div>
-			</div>
+				</div>
 		</div>
 	</div>
 

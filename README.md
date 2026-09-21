@@ -1,3 +1,18 @@
+# Next Job
+
+Next Job is a responsive job marketplace where users can explore opportunities, create an account, manage a profile, post jobs, edit existing listings, and review jobs they have posted.
+
+## Portfolio Description
+
+Refurbished the Next Job interface with a responsive, editorial job-search layout across the home page, job details, authentication, profile, and job-management flows. Existing PocketBase data handling, form structures, validation, uploads, and user actions were preserved while the visual system was renewed with improved responsive behavior, accessible contrast, glass-form surfaces, and clearer empty states. Layout refurbishment was assisted by OpenAI Codex.
+
+## Layout Refresh Highlights
+
+- Redesigned the home and job-detail experiences to share a cohesive visual system.
+- Refined login, sign-up, create-job, edit-job, and profile forms with responsive glass panels and motion.
+- Improved mobile controls, job-type selectors, form contrast, image-upload labels, and form pagination spacing.
+- Kept My Jobs pagination consistently positioned, including when a user has no posted jobs.
+
 ## Website Layout (Web version)
 
 - For optimal web performance, it is advised to use Google Chrome when accessing the web version and an Android phone when accessing the mobile version.
@@ -155,7 +170,6 @@
 <img width="200" alt="Screenshot 2023-10-02 172249" src="https://github.com/kee-siang/portfolio_next_job/assets/59173905/a502ba69-f939-45a3-8a44-d2f239d6cdd0">
 
 <img width="200" alt="Screenshot 2023-10-02 172315" src="https://github.com/kee-siang/portfolio_next_job/assets/59173905/56bc2ca5-0e4e-4373-ad74-5b9c04544b5b">
-
 
 
 

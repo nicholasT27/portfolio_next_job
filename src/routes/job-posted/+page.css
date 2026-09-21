@@ -9,6 +9,9 @@
     width: min(1200px, 100%);
     margin: 0 auto;
     padding: 2.5rem 1.5rem 4rem !important;
+	min-height: calc(100vh - 5rem);
+	display: flex;
+	flex-direction: column;
 }
 
 .posted-jobs-page > .p-4 > .flex:first-child {
@@ -37,6 +40,12 @@
 .posted-jobs-page .body {
     gap: 1.35rem !important;
     margin-top: 1.25rem !important;
+}
+
+/* Keep controls at the bottom whether the user has zero, one, or many jobs. */
+.posted-jobs-page .pagination-region {
+	margin-top: auto;
+	padding-top: 2rem;
 }
 
 .posted-jobs-page .body > div {
