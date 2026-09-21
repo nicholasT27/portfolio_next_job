@@ -243,11 +243,7 @@
 		<div class="home-hero-shade"></div>
 		<div class="home-hero-copy py-20 px-10">
 			<p>CAREERS, MADE CLEARER</p>
-			<h1 id="home-hero-title">
-				<span class="hero-heading-line">Find work that</span>
-				<span class="hero-heading-line">feels like your</span>
-				<span class="hero-heading-line">next move.</span>
-			</h1>
+			<h1 id="home-hero-title">Find work that feels like your next move.</h1>
 			<span>Explore roles from teams building what’s next.</span>
 			<a href="#open-roles">Find a job</a>
 		</div>
@@ -917,8 +913,7 @@
 	.home-hero-shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgb(39 50 56 / 72%), rgb(39 50 56 / 18%), transparent); }
 	.home-hero-copy { --home-hero-offset: 0rem; position: relative; z-index: 1; display: grid; align-content: center; width: min(72.5rem, 100%); padding: 4.5rem 2rem; text-shadow: 0 2px 16px rgb(0 0 0 / 30%); animation: home-hero-enter 1.05s cubic-bezier(.22,1,.36,1) .12s both; }
 	.home-hero-copy p { margin: 0 0 1.25rem; font-size: .78rem; font-weight: 900; letter-spacing: .18em; }
-	.home-hero-copy h1 { margin: 0; color: #fff; font-size: clamp(3.2rem, 6vw, 5.8rem); font-weight: 900; letter-spacing: -.035em; line-height: .94; }
-	.hero-heading-line { display: block; white-space: nowrap; }
+	.home-hero-copy h1 { max-width: 29rem; margin: 0; color: #fff; font-size: clamp(3.2rem, 6vw, 5.8rem); font-weight: 900; letter-spacing: -.035em; line-height: .94; }
 	.home-hero-copy span { max-width: 34rem; margin-top: 1.35rem; font-size: 1.15rem; font-weight: 750; }
 	.home-hero-copy a { display: inline-flex; width: 19rem; justify-content: center; margin-top: 2rem; border-radius: .75rem; background: #273238; padding: 1rem 1.2rem; color: #fff; font-weight: 900; text-decoration: none; text-shadow: none; transition: background 160ms ease; }
 	.home-hero-copy a:hover { background: #d65391; }
@@ -941,7 +936,7 @@
 	.home-job-list #job-listing .bg-gradient-to-br { border: 1px solid #eadfd6 !important; border-radius: 999px !important; background: #eaf1f0 !important; color: #273238 !important; font-size: .76rem; font-weight: 800; }
 	.home-page > .flex:last-of-type .pagination { color: #273238 !important; font-weight: 750; }
 	@keyframes home-hero-enter { from { opacity: 0; transform: translate(-2.25rem, var(--home-hero-offset)); } to { opacity: 1; transform: translate(0, var(--home-hero-offset)); } }
-	@media (max-width: 960px) { .home-hero { min-height: 31rem; background-position: 58% top; } .home-hero-copy { --home-hero-offset: 0rem; padding: 3.5rem 2rem; } .home-hero-copy h1 { font-size: clamp(3rem, 7.5vw, 4.6rem); } .home-results { flex-direction: column !important; } .home-filters { width: 100%; flex: 0 0 auto; } .home-job-list { width: 100%; } }
+	@media (max-width: 960px) { .home-hero { min-height: 31rem; background-position: 58% top; } .home-hero-copy { --home-hero-offset: 0rem; padding: 3.5rem 2rem; } .home-hero-copy h1 { max-width: 25rem; font-size: clamp(3rem, 7.5vw, 4.6rem); } .home-results { flex-direction: column !important; } .home-filters { width: 100%; flex: 0 0 auto; } .home-job-list { width: 100%; } }
 	@media (max-width: 700px) { .home-hero { min-height: 31rem; background-position: 61% top; } .home-hero-copy { --home-hero-offset: 0rem; padding: 3rem 1.25rem; } .home-hero-copy h1 { max-width: 19rem; font-size: clamp(3rem, 13vw, 4.25rem); } .home-hero-copy a { width: min(19rem, 100%); } .home-controls { width: calc(100% - 2rem); margin-top: 1rem; } .home-results { width: 100%; flex-direction: column !important; padding: .5rem 1rem 2rem; } .home-filters { width: auto; flex: 0 0 auto; padding: 0; border: 0; box-shadow: none; background: transparent; } .home-filters > form, .home-filters > button { display: none !important; } .home-job-list { width: 100%; margin-left: 0 !important; } .home-job-list #job-listing { padding: 1rem !important; } }
 	@media (max-width: 440px) { .home-controls { flex-direction: column !important; align-items: stretch; gap: .65rem; } .home-controls button { width: 100%; } .home-controls .pagination { justify-content: center; } .home-hero-copy span { max-width: 18rem; } }
 	@media (prefers-reduced-motion: reduce) { .home-hero-copy { animation: none; } }
