@@ -1643,10 +1643,10 @@
 	:global(.form-page-shell .form-public-note) { color: #fff !important; font-weight: 650; text-shadow: 0 1px 2px rgb(18 25 35 / 45%); }
 	:global(.form-page-shell label[for='flipCard-file-upload'] span), :global(.form-page-shell label[for='file-upload'] span) { color: #273238 !important; text-shadow: none !important; }
 	:global(.form-page-shell .carousel-indicators) { margin-top: 2rem !important; padding-top: .8rem !important; transform: translateY(2rem); }
-	@media (max-width: 767px) {
-		:global(.form-page-shell .flip-card-front > .absolute) { top: 50% !important; left: 1.5rem !important; transform: translateY(-50%) !important; }
-		:global(.form-page-shell .flip-card-front h1) { font-size: clamp(2.4rem, 12vw, 3.35rem) !important; }
-		:global(.form-page-shell .form-page-intro) { max-width: 16rem; margin-top: .85rem; font-size: 1.15rem; font-weight: 650; line-height: 1.25; }
-		:global(.form-page-shell .form-page-note) { max-width: 16rem; margin-top: .8rem; font-size: .85rem; line-height: 1.4; }
+	@media (max-width: 768px) {
+		:global(.form-page-shell) { min-height: 100svh; height: auto; overflow: auto; background: #f8f5f1; }
+		:global(.form-page-shell #flip-card) { display: none !important; }
+		:global(.form-page-shell > .formDivision) { display: flex !important; position: relative !important; z-index: 1; top: auto !important; right: auto !important; width: 100% !important; min-height: 100svh; height: auto !important; max-height: none !important; margin: 0 !important; padding: 2rem 1.25rem !important; transform: none !important; overflow: visible; border: 0 !important; border-radius: 0 !important; background: #f8f5f1 !important; box-shadow: none !important; backdrop-filter: none !important; animation: none !important; }
+		:global(.form-page-shell > .formDivision > div) { width: min(100%, 32rem) !important; height: auto !important; margin: auto; }
 	}
 </style>

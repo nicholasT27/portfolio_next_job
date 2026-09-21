@@ -117,20 +117,16 @@
 	}
 }
 
-@media (max-width: 767px) {
-	#flip-card,
-	.formDivision { width: 100% !important; }
-
-	.formDivision { padding: 1rem !important; }
+@media (max-width: 768px) {
+	.form-page-shell { min-height: 100svh; height: auto; overflow: auto; background: #f8f5f1; }
+	#flip-card { display: none !important; }
+	.form-page-shell > .formDivision { display: flex !important; position: relative !important; z-index: 1; top: auto !important; right: auto !important; width: 100% !important; min-height: 100svh; height: auto !important; max-height: none !important; margin: 0 !important; padding: 2rem 1.25rem !important; transform: none !important; overflow: visible; border: 0 !important; border-radius: 0 !important; background: #f8f5f1 !important; box-shadow: none !important; backdrop-filter: none !important; animation: none !important; }
+	.formDivision > div { width: min(100%, 28rem) !important; margin: auto; }
 
 	.flip-card-back > div > div {
 		margin-top: 5.5rem !important;
 	}
 
-	.form-page-shell .flip-card-front > .absolute { top: 50% !important; left: 1.5rem !important; transform: translateY(-50%) !important; }
-	.form-page-shell .flip-card-front h1 { font-size: clamp(2.4rem, 12vw, 3.35rem) !important; }
-	.form-page-shell .form-page-intro { max-width: 16rem; margin-top: .85rem; font-size: 1.15rem; font-weight: 650; line-height: 1.25; }
-	.form-page-shell .form-page-note { max-width: 16rem; margin-top: .8rem; font-size: .85rem; line-height: 1.4; }
 }
 
 /* Full-screen presentation inspired by the approved reference: the original login form remains untouched. */
