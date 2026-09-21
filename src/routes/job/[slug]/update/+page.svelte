@@ -1597,4 +1597,12 @@
 	:global(.carousel-indicator button) { border-radius: 999px; }
 	:global(.carousel-item h2) { font-size: 1.7rem !important; font-weight: 900 !important; letter-spacing: -.055em; }
 	:global(.carousel-item label) { font-weight: 800 !important; letter-spacing: .01em; }
+	/* Full-page visual composition; the original job values, upload controls, carousel steps, and update handler are unchanged. */
+	:global(#flip-card) { width: 42% !important; overflow: hidden; }
+	:global(.formDivision) { width: 58% !important; padding: clamp(1.5rem, 4vw, 4.5rem) !important; background: #f8f5f1 !important; }
+	:global(.flip-card-front::after) { background: linear-gradient(145deg, rgb(39 50 56 / 94%), rgb(103 46 72 / 55%), rgb(214 83 145 / 14%)) !important; }
+	:global(.flip-card-carousel-form-division), :global(.formDivision > form) { width: min(100%, 46rem) !important; }
+	:global(.carousel-item > div) { max-width: 42rem; margin: auto; }
+	:global(.carousel-indicators), :global(.carousel-indicator) { gap: .45rem; }
+	@media (max-width: 767px) { :global(#flip-card), :global(.formDivision) { width: 100% !important; } :global(.formDivision) { padding: 1rem !important; } }
 </style>

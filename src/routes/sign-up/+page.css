@@ -16,6 +16,16 @@
 .flip-card-front a { font-weight: 800; letter-spacing: .02em; }
 .flip-card-back-form h2 { color: #273238 !important; letter-spacing: -.045em; }
 
+/* Recompose the existing sign-up form into an editorial two-panel page. */
+#flip-card { width: 42% !important; overflow: hidden; }
+.formDivision { width: 58% !important; padding: clamp(1.5rem, 4vw, 4.5rem) !important; }
+.formDivision > div { width: min(100%, 34rem); }
+
+@media (max-width: 767px) {
+    #flip-card, .formDivision { width: 100% !important; }
+    .formDivision { padding: 1rem !important; }
+}
+
 @media (min-width: 350px) and (max-width: 400px) {
     .flip-card-back-form {
         margin-top: 50px;

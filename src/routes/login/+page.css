@@ -93,6 +93,11 @@
 .flip-card-front a { font-weight: 800; letter-spacing: .02em; }
 .flip-card-back h2, .formDivision h2 { color: #273238 !important; letter-spacing: -.045em; }
 
+/* Recompose the existing login form into an editorial two-panel page. */
+#flip-card { width: 42% !important; overflow: hidden; }
+.formDivision { width: 58% !important; padding: clamp(1.5rem, 4vw, 4.5rem) !important; }
+.formDivision > div { width: min(100%, 31rem); }
+
 @media (min-width: 768px) {
 	.formDivision {
 		border-left: 1px solid #e8e0d7;
@@ -100,6 +105,11 @@
 }
 
 @media (max-width: 767px) {
+	#flip-card,
+	.formDivision { width: 100% !important; }
+
+	.formDivision { padding: 1rem !important; }
+
 	.flip-card-back > div > div {
 		margin-top: 5.5rem !important;
 	}
