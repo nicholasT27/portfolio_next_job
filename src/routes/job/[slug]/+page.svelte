@@ -89,13 +89,14 @@ async function deleteRecord(id){
   <title>Job Details | Next Jobs</title>
 </svelte:head>
 
-<div class="job-detail-page bg-gradient-to-bl from-pink-500 to-orange-400">
+<div class="job-detail-page">
 
   <NavBar />
 
-<div class="p-4 body">
+<section class="job-detail-hero">
+  <div class="job-detail-hero-content">
   <div class="flex justify-between display">
-    <h1 class="text-3xl font-extrabold job-title p-4 text-white w-64 sm:w-96 rounded-lg capitalize">{data.jobs.title}</h1>
+	<h1 class="text-3xl font-extrabold job-title p-4 text-white w-64 sm:w-96 rounded-lg capitalize">{data.jobs.title}</h1>
     <!-- Show edit button for user that has log in and check whether the user is the user that create this job post-->
     {#if $isAuthenticated == true && data.jobs.user == getUserId()}
     <div class="w-32 sm:ml-2 md:w-auto md:justify-center md:items-center md:flex">
@@ -195,10 +196,12 @@ async function deleteRecord(id){
               </div>
 							{/if}
 
-    <p class="text-xl mt-2 capitalize">{data.jobs.employer}</p>
+	<p class="job-detail-meta capitalize">{data.jobs.employer} · {data.jobs.location}</p>
+  </div>
+</section>
  
-    <div class="flex flex-col sm:flex-row w-full mt-8">
-        <div class="basis-2/3 max-w-none w-full">
+    <div class="job-detail-layout">
+        <article class="job-detail-content">
           <div class="slide-up">
             <h2 class="text-xl font-semibold mb-2 text-black">Description</h2>
             <p class="border border-pink-600 mb-4"></p>
@@ -224,9 +227,9 @@ async function deleteRecord(id){
               <p class="text-xl md:text-lg break-all">{data.jobs.applicationInstructions}</p>
             </div>
           </div>
-        </div>
+        </article>
 
-        <div class="basis-1/3 md:ml-4 md:mt-0 mt-6">
+        <aside class="job-detail-sidebar">
           <div class="slide-up2">
             <h2 class="text-xl font-semibold mb-2">Location</h2>
             <p class="border md:border-orange-400 border-pink-600 mb-4"></p>
@@ -262,9 +265,8 @@ async function deleteRecord(id){
             {/if}
           </div>
           </div>
-        </div>
+        </aside>
     </div>
-</div>
 
 <Footer />
 

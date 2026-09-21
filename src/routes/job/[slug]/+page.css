@@ -1,160 +1,25 @@
-/* Job detail presentation only — data, ownership checks, and actions remain in +page.svelte. */
-.job-detail-page {
-    min-height: 100vh;
-    color: #273238;
-    background: #f8f5f1;
-}
-
-.job-detail-page .body {
-    width: min(1120px, 100%);
-    margin: 0 auto;
-    padding: 2.25rem 1.5rem 4rem !important;
-}
-
-/* The job title sits on the same editorial image language as the home hero. */
-.job-detail-page .display {
-    position: relative;
-    min-height: 14.5rem;
-    align-items: flex-end;
-    gap: 1rem;
-    padding: 2rem;
-    overflow: hidden;
-    border-radius: 1.35rem;
-    background:
-        linear-gradient(90deg, rgba(24, 35, 39, .9) 0%, rgba(24, 35, 39, .62) 46%, rgba(24, 35, 39, .18) 100%),
-        url('/rift-job-hero.png') 68% 38% / cover no-repeat;
-    box-shadow: 0 20px 45px rgba(39, 50, 56, .15);
-}
-
-.job-detail-page .job-title {
-    position: relative;
-    z-index: 1;
-    width: min(43rem, 100%) !important;
-    margin: 0;
-    padding: 0 !important;
-    color: #fff !important;
-    font-size: clamp(2rem, 5vw, 4.5rem) !important;
-    line-height: .98;
-    letter-spacing: -.065em;
-    background: transparent !important;
-    text-wrap: balance;
-}
-
-.job-detail-page .display > div {
-    position: relative;
-    z-index: 1;
-    flex-shrink: 0;
-}
-
-.job-detail-page .display a,
-.job-detail-page .display button {
-    border-radius: .7rem !important;
-    font-weight: 750;
-    transition: transform .2s ease, filter .2s ease;
-}
-
-.job-detail-page .display a:hover,
-.job-detail-page .display button:hover {
-    transform: translateY(-2px);
-    filter: brightness(1.06);
-}
-
-.job-detail-page .body > p {
-    margin: 1.25rem .3rem 0;
-    color: #69757a;
-    font-size: 1rem;
-    font-weight: 700;
-    letter-spacing: .04em;
-}
-
-.job-detail-page .body > .flex:last-of-type {
-    gap: 1.5rem;
-    margin-top: 2rem;
-}
-
-.job-detail-page h2 {
-    color: #273238 !important;
-    font-size: .76rem !important;
-    font-weight: 800 !important;
-    letter-spacing: .13em;
-    text-transform: uppercase;
-}
-
-.job-detail-page .basis-2\/3 > div > p,
-.job-detail-page .basis-1\/3 > div > p.border {
-    width: 3.5rem;
-    margin-bottom: .85rem;
-    border-color: #e66480 !important;
-    border-width: 2px;
-}
-
-.job-detail-page .basis-2\/3 > div > div,
-.job-detail-page .basis-1\/3 > div > p:not(.border) {
-    border: 1px solid #e7e0d8 !important;
-    border-radius: 1rem !important;
-    background: #fff !important;
-    box-shadow: 0 10px 28px rgba(39, 50, 56, .07) !important;
-}
-
-.job-detail-page .basis-2\/3 > div > div {
-    padding: 1.5rem !important;
-    color: #455258;
-    line-height: 1.75;
-}
-
-.job-detail-page .basis-1\/3 > div > p:not(.border) {
-    padding: 1.15rem 1.25rem !important;
-    color: #455258;
-    font-weight: 650;
-}
-
-.job-detail-page .job-type {
-    margin-left: 0 !important;
-    margin-right: .55rem;
-    border: 1px solid #dce3e3;
-    border-radius: 999px !important;
-    background: #eaf1f0 !important;
-    color: #273238 !important;
-    font-size: .86rem !important;
-    font-weight: 750;
-}
-
-@media (max-width: 640px) {
-    .job-detail-page .body {
-        padding: 1.15rem 1rem 3rem !important;
-    }
-
-    .job-detail-page .display {
-        min-height: 17rem;
-        align-items: flex-end;
-        padding: 1.5rem;
-        background-position: 62% center;
-    }
-
-    .job-detail-page .display > div {
-        position: absolute;
-        top: 1rem;
-        right: .75rem;
-    }
-
-    .job-detail-page .display > div > div {
-        display: flex;
-        width: auto;
-    }
-
-    .job-detail-page .display .inline-flex,
-    .job-detail-page .display button {
-        width: 2.85rem;
-        min-width: 2.85rem;
-        padding: 0 !important;
-        font-size: 0;
-    }
-
-    .job-detail-page .display svg {
-        margin: 0 !important;
-    }
-
-    .job-detail-page .body > .flex:last-of-type {
-        gap: 0;
-    }
-}
+/* Presentation only: job data, ownership checks, edit/delete, and application details remain unchanged. */
+.job-detail-page { min-height: 100vh; color: #273238; background: #f8f5f1; }
+.job-detail-hero { min-height: 18.75rem; color: #fff; background: linear-gradient(90deg, rgb(16 39 28 / 91%), rgb(16 39 28 / 54%), rgb(16 39 28 / 12%)), url('/rift-job-hero.png') center / cover no-repeat; }
+.job-detail-hero-content { width: min(72.5rem, 100%); margin: 0 auto; padding: 2.5rem 1.5rem; }
+.job-detail-page .display { min-height: 13rem; align-items: flex-end; gap: 1rem; }
+.job-detail-page .job-title { width: min(43rem, 100%) !important; margin: 0; padding: 0 !important; color: #fff !important; font-size: clamp(2.4rem, 5vw, 4.4rem) !important; line-height: .98; letter-spacing: -.065em; background: transparent !important; text-wrap: balance; }
+.job-detail-page .display > div { flex-shrink: 0; }
+.job-detail-page .display a, .job-detail-page .display button { border-radius: .7rem !important; font-weight: 750; transition: transform .2s ease, filter .2s ease; }
+.job-detail-page .display a:hover, .job-detail-page .display button:hover { transform: translateY(-2px); filter: brightness(1.06); }
+.job-detail-meta { margin: .4rem 0 0; color: rgb(255 255 255 / 82%); font-size: 1rem; font-weight: 700; letter-spacing: .04em; }
+.job-detail-layout { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) 20rem; align-items: start; width: min(72.5rem, calc(100% - 3rem)); gap: 1.4rem; margin: -1.55rem auto 0; padding-bottom: 3.75rem; }
+.job-detail-content, .job-detail-sidebar { border: 1px solid #e7e0d8; border-radius: 1rem; background: #fffdfb; box-shadow: 0 10px 28px rgb(39 50 56 / 7%); }
+.job-detail-content { padding: 1.5rem; }
+.job-detail-sidebar { position: sticky; top: 1rem; padding: 1.35rem; }
+.job-detail-page h2 { margin: 0 0 .8rem; color: #273238 !important; font-size: .78rem !important; font-weight: 850 !important; letter-spacing: .13em; text-transform: uppercase; }
+.job-detail-content > div > p.border, .job-detail-sidebar > div > p.border { width: 3.5rem; margin-bottom: 1rem; border-color: #e66480 !important; border-width: 2px; }
+.job-detail-content > div > div { padding: 0 !important; border: 0 !important; background: transparent !important; box-shadow: none !important; color: #455258; line-height: 1.75; }
+.job-detail-content > div + div { margin-top: 2rem; }
+.job-detail-content p, .job-detail-content li { color: #455258; line-height: 1.75; }
+.job-detail-content h3 { margin: 1.75rem 0 .65rem; color: #273238; font-size: 1rem; font-weight: 800; }
+.job-detail-sidebar > div + div { margin-top: 1.5rem; }
+.job-detail-sidebar > div > p:not(.border) { margin: 0; padding: 0 0 1rem !important; border: 0 !important; border-bottom: 1px solid #e7e0d8 !important; border-radius: 0 !important; background: transparent !important; box-shadow: none !important; color: #455258; font-size: 1rem !important; font-weight: 650; line-height: 1.55; }
+.job-detail-page .job-type { margin: 0 .45rem .45rem 0 !important; border: 1px solid #dce3e3; border-radius: 999px !important; background: #eaf1f0 !important; color: #273238 !important; font-size: .86rem !important; font-weight: 750; }
+@media (max-width: 800px) { .job-detail-hero { min-height: 16rem; background-position: 59% center; } .job-detail-hero-content { padding: 1.5rem 1rem; } .job-detail-page .display { min-height: 12rem; align-items: flex-end; } .job-detail-page .job-title { font-size: clamp(2.2rem, 11vw, 3.5rem) !important; } .job-detail-layout { grid-template-columns: 1fr; width: min(100% - 2rem, 40rem); margin-top: -1rem; padding-bottom: 2.5rem; } .job-detail-sidebar { position: static; } }
+@media (max-width: 560px) { .job-detail-page .display { align-items: flex-start; flex-direction: column-reverse; justify-content: flex-end; } .job-detail-page .display > div { align-self: flex-end; } .job-detail-page .display .inline-flex, .job-detail-page .display button { width: 2.8rem; min-width: 2.8rem; padding: 0 !important; font-size: 0; } .job-detail-page .display svg { margin: 0 !important; } }
