@@ -587,7 +587,7 @@
 
 			<!-- Job Type Selection -->
 			<button
-				class="hidden md:block text-black bg-white focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5"
+				class="block w-full text-left text-black bg-white focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 md:w-auto"
 				type="button"
 				on:click={openJobTypeDropDownMenu}
 			>
@@ -632,7 +632,7 @@
 
 			{#if $jobTypeDropDownMenu == true}
 				<div
-					class="hidden md:block slide-down2 mt-2 ml-2 w-48 bg-white divide-y divide-gray-100 rounded-lg"
+					class="block slide-down2 mt-2 w-full bg-white divide-y divide-gray-100 rounded-lg md:ml-2 md:w-48"
 				>
 					<ul class="p-3 space-y-3 text-sm text-gray-700">
 						<li>
@@ -700,7 +700,7 @@
 
 			<!-- Salary indicator -->
 			<button
-				class="hidden md:block text-black bg-white focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5"
+				class="block w-full text-left text-black bg-white focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 md:w-auto"
 				type="button"
 				on:click={openSalaryDropDownMenu}
 			>
@@ -745,7 +745,7 @@
 
 			{#if $salaryDropDownMenu == true}
 				<div
-					class="hidden md:block slide-down2 mt-2 ml-5 w-48 bg-white divide-y divide-gray-100 rounded-lg"
+					class="block slide-down2 mt-2 w-full bg-white divide-y divide-gray-100 rounded-lg md:ml-5 md:w-48"
 				>
 					<label
 						for="minmax-range"
