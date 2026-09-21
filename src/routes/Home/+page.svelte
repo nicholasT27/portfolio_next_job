@@ -550,7 +550,7 @@
 				{/if}
 
 
-			<form class="hidden md:block w-64 m-4" on:submit|preventDefault={filterJobs}>
+			<form class="block w-full m-0 md:w-64 md:m-4" on:submit|preventDefault={filterJobs}>
 				<div class="relative">
 					<div class="absolute inset-y-0 left-0 flex items-center pl-3">
 						<svg
@@ -938,7 +938,7 @@
 	@keyframes home-hero-enter { from { opacity: 0; transform: translate(-2.25rem, var(--home-hero-offset)); } to { opacity: 1; transform: translate(0, var(--home-hero-offset)); } }
 	@media (min-width: 768px) { .home-job-list #job-listing { display: grid !important; grid-template-columns: minmax(0, 1fr) minmax(14rem, auto); align-items: center; gap: 1.5rem; } .home-job-list #job-listing > div:first-child { display: grid !important; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 1rem; min-width: 0; } .home-job-list #job-listing > div:last-child { align-items: end; text-align: right; } }
 	@media (max-width: 960px) { .home-hero { min-height: 31rem; background-position: 58% top; } .home-hero-copy { --home-hero-offset: 0rem; padding: 3.5rem 2rem; } .home-hero-copy h1 { max-width: 25rem; font-size: clamp(3rem, 7.5vw, 4.6rem); } .home-results { flex-direction: column !important; } .home-filters { width: 100%; flex: 0 0 auto; } .home-job-list { width: 100%; } }
-	@media (max-width: 700px) { .home-hero { min-height: 31rem; background-position: 61% top; } .home-hero-copy { --home-hero-offset: 0rem; padding: 3rem 1.25rem; } .home-hero-copy h1 { max-width: 19rem; font-size: clamp(3rem, 13vw, 4.25rem); } .home-hero-copy a { width: min(19rem, 100%); } .home-controls { width: calc(100% - 2rem); margin-top: 1rem; } .home-results { width: 100%; flex-direction: column !important; padding: .5rem 1rem 2rem; } .home-filters { width: auto; flex: 0 0 auto; padding: 0; border: 0; box-shadow: none; background: transparent; } .home-filters > form, .home-filters > button { display: none !important; } .home-job-list { width: 100%; margin-left: 0 !important; } .home-job-list #job-listing { padding: 1rem !important; } }
+	@media (max-width: 700px) { .home-hero { min-height: 31rem; background-position: 61% top; } .home-hero-copy { --home-hero-offset: 0rem; padding: 3rem 1.25rem; } .home-hero-copy h1 { max-width: 19rem; font-size: clamp(3rem, 13vw, 4.25rem); } .home-hero-copy a { width: min(19rem, 100%); } .home-controls { width: calc(100% - 2rem); margin-top: 1rem; } .home-results { width: 100%; flex-direction: column !important; padding: .5rem 1rem 2rem; } .home-filters { width: auto; flex: 0 0 auto; padding: 0; border: 0; box-shadow: none; background: transparent; } .home-filters > button { display: inline-flex !important; align-self: flex-start; margin: .5rem 0 !important; } .home-job-list { width: 100%; margin-left: 0 !important; } .home-job-list #job-listing { padding: 1rem !important; } }
 	@media (max-width: 440px) { .home-controls { flex-direction: column !important; align-items: stretch; gap: .65rem; } .home-controls button { width: 100%; } .home-controls .pagination { justify-content: center; } .home-hero-copy span { max-width: 18rem; } }
 	@media (prefers-reduced-motion: reduce) { .home-hero-copy { animation: none; } }
 </style>
