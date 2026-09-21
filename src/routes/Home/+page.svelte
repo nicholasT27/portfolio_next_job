@@ -241,7 +241,7 @@
 	<!-- Visual-only hero. Existing search, filters, pagination and job data stay unchanged below. -->
 	<section class="home-hero" aria-labelledby="home-hero-title">
 		<div class="home-hero-shade"></div>
-		<div class="home-hero-copy">
+		<div class="home-hero-copy py-20 px-10">
 			<p>CAREERS, MADE CLEARER</p>
 			<h1 id="home-hero-title">Find work that feels like your next move.</h1>
 			<span>Explore roles from teams building what’s next.</span>
@@ -911,7 +911,7 @@
 	.home-page { background: #f8f5f1; }
 	.home-hero { position: relative; display: grid; min-height: 33.75rem; overflow: hidden; background: url('/rift-job-hero.png') center top / cover; color: #fff; }
 	.home-hero-shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgb(39 50 56 / 72%), rgb(39 50 56 / 18%), transparent); }
-	.home-hero-copy { --home-hero-offset: 6.5rem; position: relative; z-index: 1; display: grid; align-content: center; width: min(72.5rem, 100%); padding: 4.5rem 2rem; text-shadow: 0 2px 16px rgb(0 0 0 / 30%); animation: home-hero-enter 720ms cubic-bezier(.22,1,.36,1) both; }
+	.home-hero-copy { --home-hero-offset: 6.5rem; position: relative; z-index: 1; display: grid; align-content: center; width: min(72.5rem, 100%); padding: 4.5rem 2rem; text-shadow: 0 2px 16px rgb(0 0 0 / 30%); animation: home-hero-enter 1.05s cubic-bezier(.22,1,.36,1) .12s both; }
 	.home-hero-copy p { margin: 0 0 1.25rem; font-size: .78rem; font-weight: 900; letter-spacing: .18em; }
 	.home-hero-copy h1 { max-width: 24rem; margin: 0; color: #fff; font-size: clamp(3.2rem, 6vw, 5.8rem); font-weight: 900; letter-spacing: -.035em; line-height: .94; }
 	.home-hero-copy span { max-width: 34rem; margin-top: 1.35rem; font-size: 1.15rem; font-weight: 750; }
