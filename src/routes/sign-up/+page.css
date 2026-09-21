@@ -5,8 +5,8 @@
 /* Visual-only account-page palette; original inputs, upload control and create request are unchanged. */
 .formDivision, .flip-card-back { background: #f8f5f1 !important; }
 .flip-card-front { background: #273238; }
-.flip-card-back-form { border: 1px solid #ead8ca !important; border-radius: 1.25rem !important; box-shadow: 0 1.25rem 3rem rgb(39 50 56 / 12%) !important; }
-.flip-card-back-form input { border-color: #d8c6b9 !important; }
+.flip-card-back-form { border: 1px solid #ead8ca !important; border-top: 4px solid #d65391 !important; border-radius: 1.25rem !important; background: #fffaf6 !important; box-shadow: 0 1.25rem 3rem rgb(39 50 56 / 12%) !important; }
+.flip-card-back-form input { min-height: 3rem; border-color: #d8c6b9 !important; border-radius: .75rem !important; background: #fff !important; }
 .flip-card-back-form button[type='submit'] { background: #273238 !important; }
 .flip-card-back-form button[type='submit']:hover { background: #d65391 !important; }
 .flip-card-front::after { position: absolute; inset: 0; content: ''; pointer-events: none; background: linear-gradient(90deg, rgb(39 50 56 / 91%), rgb(93 48 68 / 48%), rgb(214 83 145 / 12%)); }

@@ -1583,8 +1583,8 @@
 	:global(#flip-card), :global(.formDivision) { background: #f8eee7 !important; }
 	:global(.flip-card-front) { background: #273238; }
 	:global(.flip-card-back) { background: #f8eee7 !important; }
-	:global(.carousel-item > div) { border: 1px solid #ead8ca !important; border-radius: 1.25rem !important; background: #fff !important; box-shadow: 0 1.25rem 3rem rgb(39 50 56 / 12%); }
-	:global(input), :global(textarea) { border-color: #d8c6b9 !important; }
+	:global(.carousel-item > div) { border: 1px solid #ead8ca !important; border-top: 4px solid #d65391 !important; border-radius: 1.25rem !important; background: #fffaf6 !important; box-shadow: 0 1.25rem 3rem rgb(39 50 56 / 12%); }
+	:global(input), :global(textarea) { min-height: 3rem; border-color: #d8c6b9 !important; border-radius: .75rem !important; background: #fff !important; }
 	:global(button[type='submit']) { background: #273238 !important; }
 	:global(button[type='submit']:hover) { background: #d65391 !important; }
 	:global(.flip-card-front::after) { position: absolute; inset: 0; content: ''; pointer-events: none; background: linear-gradient(90deg, rgb(24 35 39 / 82%), rgb(24 35 39 / 18%)); }
@@ -1595,4 +1595,6 @@
 	:global(.carousel-item label), :global(.carousel-item h2), :global(.carousel-item h3) { color: #273238 !important; }
 	:global(.carousel-item input:focus), :global(.carousel-item textarea:focus) { border-color: #d65391 !important; box-shadow: 0 0 0 3px rgb(214 83 145 / 14%) !important; }
 	:global(.carousel-indicator button) { border-radius: 999px; }
+	:global(.carousel-item h2) { font-size: 1.7rem !important; font-weight: 900 !important; letter-spacing: -.055em; }
+	:global(.carousel-item label) { font-weight: 800 !important; letter-spacing: .01em; }
 </style>

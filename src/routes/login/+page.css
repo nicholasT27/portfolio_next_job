@@ -26,6 +26,7 @@
 .formDivision > div > div {
 	border: 1px solid #eadfd6 !important;
 	border-radius: 1.25rem !important;
+	background: #fffaf6 !important;
 	box-shadow: 0 1.25rem 3rem rgb(39 50 56 / 12%) !important;
 }
 
@@ -34,8 +35,12 @@
 	color: #273238;
 }
 
+.flip-card-back form > div:first-child,
+.formDivision form > div:first-child { border-top: 4px solid #d65391; }
+
 .flip-card-back input,
 .formDivision input {
+	min-height: 3rem;
 	border-color: #d8c6b9 !important;
 	border-radius: .75rem !important;
 	background: #fffdfb !important;
