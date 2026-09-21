@@ -298,8 +298,7 @@
 							/>
 						</svg>
 					</div>
-					<h1>Edit Job</h1>
-					<h1 class="indent-7 absolute text-gray-200 left-16 text-5xl font-bold mt-5">Section</h1>
+					<h1>Edit job</h1>
 				</div>
 
 				<button
@@ -1590,6 +1589,8 @@
 	:global(button[type='submit']:hover) { background: #d65391 !important; }
 	:global(.flip-card-front::after) { position: absolute; inset: 0; content: ''; pointer-events: none; background: linear-gradient(90deg, rgb(24 35 39 / 82%), rgb(24 35 39 / 18%)); }
 	:global(.flip-card-front > :not(img)) { z-index: 1; }
+	:global(.flip-card-front h1) { letter-spacing: -.065em; line-height: .94; }
+	:global(.flip-card-front a) { font-weight: 800; letter-spacing: .02em; }
 	:global(.carousel-item > div) { color: #273238; }
 	:global(.carousel-item label), :global(.carousel-item h2), :global(.carousel-item h3) { color: #273238 !important; }
 	:global(.carousel-item input:focus), :global(.carousel-item textarea:focus) { border-color: #d65391 !important; box-shadow: 0 0 0 3px rgb(214 83 145 / 14%) !important; }

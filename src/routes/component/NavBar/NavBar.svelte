@@ -22,7 +22,7 @@
       <a class="transition hover:text-[#d65391]" href="/Home#open-roles">Explore jobs</a>
       {#if $isAuthenticated}
         <a class="transition hover:text-[#d65391]" href="/job-posted">My jobs</a>
-        <button on:click={loginStatus} class="rounded-full bg-[#273238] px-5 py-2.5 text-white transition hover:bg-[#d65391]">Post a job</button>
+        <button on:click={loginStatus} class="rounded-full bg-[#d65391] px-5 py-2.5 text-white transition hover:bg-[#b93f77]">Post a job</button>
       {:else}
         <a class="transition hover:text-[#d65391]" href="/login">Log in</a>
         <button on:click={signUp} class="rounded-full bg-[#273238] px-5 py-2.5 text-white transition hover:bg-[#d65391]">Join free</button>

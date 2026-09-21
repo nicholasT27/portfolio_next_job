@@ -3,15 +3,18 @@
 }
 
 /* Visual-only account-page palette; original inputs, upload control and create request are unchanged. */
-.formDivision, .flip-card-back { background: #f8eee7 !important; }
+.formDivision, .flip-card-back { background: #f8f5f1 !important; }
 .flip-card-front { background: #273238; }
 .flip-card-back-form { border: 1px solid #ead8ca !important; border-radius: 1.25rem !important; box-shadow: 0 1.25rem 3rem rgb(39 50 56 / 12%) !important; }
 .flip-card-back-form input { border-color: #d8c6b9 !important; }
 .flip-card-back-form button[type='submit'] { background: #273238 !important; }
 .flip-card-back-form button[type='submit']:hover { background: #d65391 !important; }
-.flip-card-front::after { position: absolute; inset: 0; content: ''; pointer-events: none; background: linear-gradient(90deg, rgb(24 35 39 / 84%), rgb(24 35 39 / 18%)); }
+.flip-card-front::after { position: absolute; inset: 0; content: ''; pointer-events: none; background: linear-gradient(90deg, rgb(39 50 56 / 91%), rgb(93 48 68 / 48%), rgb(214 83 145 / 12%)); }
 .flip-card-front > :not(img) { z-index: 1; }
 .flip-card-back-form input:focus { border-color: #d65391 !important; box-shadow: 0 0 0 3px rgb(214 83 145 / 14%) !important; }
+.flip-card-front h1 { font-size: clamp(3.2rem, 5vw, 5.4rem) !important; letter-spacing: -.065em; line-height: .94; }
+.flip-card-front a { font-weight: 800; letter-spacing: .02em; }
+.flip-card-back-form h2 { color: #273238 !important; letter-spacing: -.045em; }
 
 @media (min-width: 350px) and (max-width: 400px) {
     .flip-card-back-form {

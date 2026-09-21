@@ -1,8 +1,6 @@
 /* Visual-only login refresh. The existing authentication, error state, and flip behaviour stay in +page.svelte. */
 .formDivision,
-.flip-card-back {
-	background: #f8f5f1 !important;
-}
+.flip-card-back { background: #f8f5f1 !important; }
 
 .flip-card-inner {
 	box-shadow: none;
@@ -17,7 +15,7 @@
 	inset: 0;
 	content: '';
 	pointer-events: none;
-	background: linear-gradient(90deg, rgba(24, 35, 39, .86), rgba(24, 35, 39, .2));
+	background: linear-gradient(90deg, rgb(39 50 56 / 91%), rgb(93 48 68 / 48%), rgb(214 83 145 / 12%));
 }
 
 .flip-card-front > :not(img) {
@@ -86,9 +84,9 @@
 	}
 }
 
-.flip-card-front h1 {
-	letter-spacing: -.055em;
-}
+.flip-card-front h1 { font-size: clamp(3.2rem, 5vw, 5.4rem) !important; letter-spacing: -.065em; line-height: .94; }
+.flip-card-front a { font-weight: 800; letter-spacing: .02em; }
+.flip-card-back h2, .formDivision h2 { color: #273238 !important; letter-spacing: -.045em; }
 
 @media (min-width: 768px) {
 	.formDivision {
