@@ -925,6 +925,9 @@
 	.home-filters { width: 17.5rem; flex: 0 0 17.5rem; padding: 1rem; border: 1px solid #e7e0d8; border-radius: 1rem; background: #fffdfb; box-shadow: 0 10px 28px rgb(39 50 56 / 6%); }
 	.home-filters form { width: auto !important; margin: 0 !important; }
 	.home-filters input { border-color: #ded4cb !important; border-radius: .7rem !important; background: #fffdfb !important; }
+	.home-filters input[type='checkbox'] { width: 1.25rem; height: 1.25rem; appearance: none; border: 2px solid #ded4cb !important; border-radius: 999px !important; background: #fff !important; cursor: pointer; }
+	.home-filters input[type='checkbox']:checked { border-color: #d65391 !important; background: radial-gradient(circle, #d65391 0 .31rem, transparent .34rem), #fff !important; }
+	.home-filters input[type='checkbox']:focus-visible { outline: 3px solid rgb(214 83 145 / 25%); outline-offset: 2px; }
 	.home-filters form button { border-radius: .55rem !important; background: #d65391 !important; }
 	.home-filters > button { margin: .75rem 0 0 !important; border-radius: .6rem !important; color: #273238 !important; background: #f1ede8 !important; text-align: left; }
 	.home-job-list { display: grid; gap: .8rem; margin: 0 !important; border: 0 !important; }
