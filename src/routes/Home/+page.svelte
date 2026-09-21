@@ -235,7 +235,7 @@
 	<title>Home | Next Jobs</title>
 </svelte:head>
 
-<div class="flex flex-col">
+<div class="home-page flex flex-col">
 	<NavBar />
 
 	<!-- Visual-only hero. Existing search, filters, pagination and job data stay unchanged below. -->
@@ -249,7 +249,7 @@
 		</div>
 	</section>
 
-	<div id="open-roles" class="flex p-2 m-2 space-x-5 flex-row justify-between">
+	<div id="open-roles" class="home-controls flex p-2 m-2 space-x-5 flex-row justify-between">
 		<button
 			type="button"
 			class="items-center justify-center p-0.5 mb-2 h-10 mr-2 text-white text-sm font-medium rounded-lg bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl"
@@ -265,9 +265,9 @@
 		</p>
 	</div>
 
-	<div class="flex">
+	<div class="home-results flex">
 		<!-- Filter search -->
-		<div class="flex flex-col">
+		<div class="home-filters flex flex-col">
 			<button
 				type="button"
 				on:click={openSideBar}
@@ -770,7 +770,7 @@
 		</div>
 
 		<!-- Job Listing -->
-		<ul class="shrink w-full divide-y divide-gray-200 ml-10">
+		<ul class="home-job-list shrink w-full divide-y divide-gray-200 ml-10">
 			{#each filteredJobs as job (job.id)}
 				<a href="/job/{job.id}">
 					<li
@@ -908,15 +908,34 @@
 	@import '../Home/+page.css';
 
 	/* Visual-only hero; the job listing and filtering controls keep their original markup and handlers. */
+	.home-page { background: #f8f5f1; }
 	.home-hero { position: relative; display: grid; min-height: clamp(30rem, 48vw, 36rem); overflow: hidden; background: url('/rift-job-hero.png') 62% top / cover; color: #fff; }
 	.home-hero-shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgb(39 50 56 / 72%), rgb(39 50 56 / 18%), transparent); }
 	.home-hero-copy { position: relative; z-index: 1; display: grid; align-content: center; width: min(72.5rem, 100%); padding: 4.5rem 2rem; text-shadow: 0 2px 16px rgb(0 0 0 / 30%); animation: home-hero-enter 700ms cubic-bezier(.2,.75,.2,1) both; }
 	.home-hero-copy p { margin: 0 0 1.25rem; font-size: .78rem; font-weight: 900; letter-spacing: .18em; }
-	.home-hero-copy h1 { max-width: 43rem; margin: 0; color: #fff; font-size: clamp(3.2rem, 6vw, 5.8rem); font-weight: 900; letter-spacing: -.065em; line-height: .94; }
+	.home-hero-copy h1 { max-width: 20rem; margin: 0; color: #fff; font-size: clamp(3.2rem, 6vw, 5.8rem); font-weight: 900; letter-spacing: -.065em; line-height: .94; }
 	.home-hero-copy span { max-width: 34rem; margin-top: 1.35rem; font-size: 1.15rem; font-weight: 750; }
 	.home-hero-copy a { display: inline-flex; width: 19rem; justify-content: center; margin-top: 2rem; border-radius: .75rem; background: #273238; padding: 1rem 1.2rem; color: #fff; font-weight: 900; text-decoration: none; text-shadow: none; transition: background 160ms ease; }
 	.home-hero-copy a:hover { background: #d65391; }
+	.home-controls { width: min(1120px, calc(100% - 2rem)); margin: 2rem auto .35rem; padding: 0 !important; align-items: center; }
+	.home-controls button { height: auto !important; margin: 0 !important; border-radius: .7rem !important; background: #273238 !important; box-shadow: none; }
+	.home-controls button:hover { background: #d65391 !important; }
+	.home-controls .pagination { color: #69757a !important; font-size: .8rem; font-weight: 750; letter-spacing: .04em; }
+	.home-results { width: min(1120px, calc(100% - 2rem)); gap: 1.25rem; margin: 0 auto; padding: 1.25rem 0 2.5rem; }
+	.home-filters { width: 17.5rem; flex: 0 0 17.5rem; padding: 1rem; border: 1px solid #e7e0d8; border-radius: 1rem; background: #fffdfb; box-shadow: 0 10px 28px rgb(39 50 56 / 6%); }
+	.home-filters form { width: auto !important; margin: 0 !important; }
+	.home-filters input { border-color: #ded4cb !important; border-radius: .7rem !important; background: #fffdfb !important; }
+	.home-filters form button { border-radius: .55rem !important; background: #d65391 !important; }
+	.home-filters > button { margin: .75rem 0 0 !important; border-radius: .6rem !important; color: #273238 !important; background: #f1ede8 !important; text-align: left; }
+	.home-job-list { display: grid; gap: .8rem; margin: 0 !important; border: 0 !important; }
+	.home-job-list > a { display: block; color: inherit; text-decoration: none; }
+	.home-job-list #job-listing { min-height: 7.2rem; margin: 0 !important; border: 1px solid #e7e0d8 !important; border-radius: 1rem !important; background: #fffdfb; box-shadow: 0 8px 22px rgb(39 50 56 / 5%); transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
+	.home-job-list #job-listing:hover { border-color: #ddbdca !important; background: #fff !important; box-shadow: 0 15px 28px rgb(39 50 56 / 10%); transform: translateY(-2px); }
+	.home-job-list #job-listing img { width: 3.25rem; height: 3.25rem; border: 1px solid #eadfd6; }
+	.home-job-list #job-listing .grid { display: flex !important; min-width: 14rem; gap: .4rem !important; }
+	.home-job-list #job-listing .bg-gradient-to-br { border: 1px solid #eadfd6 !important; border-radius: 999px !important; background: #eaf1f0 !important; color: #273238 !important; font-size: .76rem; font-weight: 800; }
+	.home-page > .flex:last-of-type .pagination { color: #273238 !important; font-weight: 750; }
 	@keyframes home-hero-enter { from { opacity: 0; transform: translateX(-2.5rem); } to { opacity: 1; transform: translateX(0); } }
-	@media (max-width: 700px) { .home-hero { min-height: 31rem; background-position: 61% top; } .home-hero-copy { padding: 3rem 1.25rem; } .home-hero-copy h1 { max-width: 19rem; font-size: clamp(3rem, 13vw, 4.25rem); } .home-hero-copy a { width: min(19rem, 100%); } }
+	@media (max-width: 700px) { .home-hero { min-height: 31rem; background-position: 61% top; } .home-hero-copy { padding: 3rem 1.25rem; } .home-hero-copy h1 { max-width: 19rem; font-size: clamp(3rem, 13vw, 4.25rem); } .home-hero-copy a { width: min(19rem, 100%); } .home-controls { width: calc(100% - 2rem); margin-top: 1rem; } .home-results { width: 100%; padding: .5rem 1rem 2rem; } .home-filters { width: auto; flex: 0 0 auto; padding: 0; border: 0; box-shadow: none; background: transparent; } .home-filters > form, .home-filters > button { display: none !important; } .home-job-list { margin-left: 0 !important; } .home-job-list #job-listing { padding: 1rem !important; } }
 	@media (prefers-reduced-motion: reduce) { .home-hero-copy { animation: none; } }
 </style>
