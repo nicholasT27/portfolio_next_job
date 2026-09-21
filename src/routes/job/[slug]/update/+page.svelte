@@ -1579,3 +1579,13 @@
 	</div>
 </div>
 
+<!-- Visual-only refinement: the existing carousel, inputs, upload handlers and update/delete requests remain intact. -->
+<style>
+	:global(#flip-card), :global(.formDivision) { background: #f8eee7 !important; }
+	:global(.flip-card-front) { background: #273238; }
+	:global(.flip-card-back) { background: #f8eee7 !important; }
+	:global(.carousel-item > div) { border: 1px solid #ead8ca !important; border-radius: 1.25rem !important; background: #fff !important; box-shadow: 0 1.25rem 3rem rgb(39 50 56 / 12%); }
+	:global(input), :global(textarea) { border-color: #d8c6b9 !important; }
+	:global(button[type='submit']) { background: #273238 !important; }
+	:global(button[type='submit']:hover) { background: #d65391 !important; }
+</style>

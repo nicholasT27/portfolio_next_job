@@ -2,6 +2,14 @@
     height: 550px;
 }
 
+/* Visual-only account-page palette; original inputs, upload control and create request are unchanged. */
+.formDivision, .flip-card-back { background: #f8eee7 !important; }
+.flip-card-front { background: #273238; }
+.flip-card-back-form { border: 1px solid #ead8ca !important; border-radius: 1.25rem !important; box-shadow: 0 1.25rem 3rem rgb(39 50 56 / 12%) !important; }
+.flip-card-back-form input { border-color: #d8c6b9 !important; }
+.flip-card-back-form button[type='submit'] { background: #273238 !important; }
+.flip-card-back-form button[type='submit']:hover { background: #d65391 !important; }
+
 @media (min-width: 350px) and (max-width: 400px) {
     .flip-card-back-form {
         margin-top: 50px;

@@ -2,6 +2,12 @@
     background-color: #20333a;
 }
 
+/* Visual-only profile palette; profile picture and username update mechanisms are unchanged. */
+.formDivision, .flip-card-back { background: #f8eee7 !important; }
+.flip-card-front { background: #273238; }
+.userData { background-color: #273238; }
+.flip-card-back input { border: 1px solid #d8c6b9 !important; border-radius: .75rem !important; }
+.flip-card-back button { border-radius: .75rem; }
 
 
 
