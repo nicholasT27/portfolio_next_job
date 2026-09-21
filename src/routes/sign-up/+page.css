@@ -9,6 +9,9 @@
 .flip-card-back-form input { border-color: #d8c6b9 !important; }
 .flip-card-back-form button[type='submit'] { background: #273238 !important; }
 .flip-card-back-form button[type='submit']:hover { background: #d65391 !important; }
+.flip-card-front::after { position: absolute; inset: 0; content: ''; pointer-events: none; background: linear-gradient(90deg, rgb(24 35 39 / 84%), rgb(24 35 39 / 18%)); }
+.flip-card-front > :not(img) { z-index: 1; }
+.flip-card-back-form input:focus { border-color: #d65391 !important; box-shadow: 0 0 0 3px rgb(214 83 145 / 14%) !important; }
 
 @media (min-width: 350px) and (max-width: 400px) {
     .flip-card-back-form {

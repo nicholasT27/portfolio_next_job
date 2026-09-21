@@ -1,0 +1,103 @@
+/* Visual-only login refresh. The existing authentication, error state, and flip behaviour stay in +page.svelte. */
+.formDivision,
+.flip-card-back {
+	background: #f8f5f1 !important;
+}
+
+.flip-card-inner {
+	box-shadow: none;
+}
+
+.flip-card-front {
+	background: #273238;
+}
+
+.flip-card-front::after {
+	position: absolute;
+	inset: 0;
+	content: '';
+	pointer-events: none;
+	background: linear-gradient(90deg, rgba(24, 35, 39, .86), rgba(24, 35, 39, .2));
+}
+
+.flip-card-front > :not(img) {
+	z-index: 1;
+}
+
+.flip-card-back > div > div,
+.formDivision > div > div {
+	border: 1px solid #eadfd6 !important;
+	border-radius: 1.25rem !important;
+	box-shadow: 0 1.25rem 3rem rgb(39 50 56 / 12%) !important;
+}
+
+.flip-card-back form,
+.formDivision form {
+	color: #273238;
+}
+
+.flip-card-back input,
+.formDivision input {
+	border-color: #d8c6b9 !important;
+	border-radius: .75rem !important;
+	background: #fffdfb !important;
+}
+
+.flip-card-back input:focus,
+.formDivision input:focus {
+	border-color: #d65391 !important;
+	box-shadow: 0 0 0 3px rgb(214 83 145 / 14%) !important;
+}
+
+.flip-card-back button[type='submit'],
+.formDivision button[type='submit'] {
+	border-radius: .75rem !important;
+	background: #273238 !important;
+	font-weight: 750 !important;
+	transition: transform .2s ease, background .2s ease;
+}
+
+.flip-card-back button[type='submit']:hover,
+.formDivision button[type='submit']:hover {
+	background: #d65391 !important;
+	transform: translateY(-2px);
+}
+
+.flip-card-back a,
+.formDivision a {
+	color: #c94a75 !important;
+	font-weight: 700;
+}
+
+/* Keep the existing entrance effect, but make the form available promptly. */
+.formDivision .slide-down {
+	animation: login-card-in .55s cubic-bezier(.22, 1, .36, 1) both;
+}
+
+@keyframes login-card-in {
+	from {
+		opacity: 0;
+		transform: translateY(1.25rem);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.flip-card-front h1 {
+	letter-spacing: -.055em;
+}
+
+@media (min-width: 768px) {
+	.formDivision {
+		border-left: 1px solid #e8e0d7;
+	}
+}
+
+@media (max-width: 767px) {
+	.flip-card-back > div > div {
+		margin-top: 5.5rem !important;
+	}
+}

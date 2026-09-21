@@ -1588,4 +1588,10 @@
 	:global(input), :global(textarea) { border-color: #d8c6b9 !important; }
 	:global(button[type='submit']) { background: #273238 !important; }
 	:global(button[type='submit']:hover) { background: #d65391 !important; }
+	:global(.flip-card-front::after) { position: absolute; inset: 0; content: ''; pointer-events: none; background: linear-gradient(90deg, rgb(24 35 39 / 82%), rgb(24 35 39 / 18%)); }
+	:global(.flip-card-front > :not(img)) { z-index: 1; }
+	:global(.carousel-item > div) { color: #273238; }
+	:global(.carousel-item label), :global(.carousel-item h2), :global(.carousel-item h3) { color: #273238 !important; }
+	:global(.carousel-item input:focus), :global(.carousel-item textarea:focus) { border-color: #d65391 !important; box-shadow: 0 0 0 3px rgb(214 83 145 / 14%) !important; }
+	:global(.carousel-indicator button) { border-radius: 999px; }
 </style>

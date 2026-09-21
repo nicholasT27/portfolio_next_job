@@ -579,3 +579,6 @@
 	</div>
 </div>
 
+<style>
+	@import './+page.css';
+</style>

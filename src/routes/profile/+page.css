@@ -8,6 +8,8 @@
 .userData { background-color: #273238; }
 .flip-card-back input { border: 1px solid #d8c6b9 !important; border-radius: .75rem !important; }
 .flip-card-back button { border-radius: .75rem; }
-
+.flip-card-front::after { position: absolute; inset: 0; content: ''; pointer-events: none; background: linear-gradient(90deg, rgb(24 35 39 / 84%), rgb(24 35 39 / 18%)); }
+.flip-card-front > :not(img) { z-index: 1; }
+.flip-card-back input:focus { border-color: #d65391 !important; box-shadow: 0 0 0 3px rgb(214 83 145 / 14%) !important; }
 
 

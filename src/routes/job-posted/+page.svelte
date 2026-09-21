@@ -205,7 +205,7 @@
 	<title>Job Posted | Next Jobs</title>
 </svelte:head>
 
-<div class="bg-gradient-to-bl from-pink-500 to-orange-400">
+<div class="posted-jobs-page bg-gradient-to-bl from-pink-500 to-orange-400">
 	<NavBar />
 
 	<div class="p-4">

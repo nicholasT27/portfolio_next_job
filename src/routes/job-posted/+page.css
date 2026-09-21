@@ -1,37 +1,150 @@
- footer,
- .job-title {
-     background-color: #20333a;
- }
+/* Visual-only job-management layout; fetching, pagination, edit and delete logic are unchanged. */
+.posted-jobs-page {
+    min-height: 100vh;
+    color: #273238;
+    background: #f8f5f1;
+}
 
- .pagination {
-     color: #20333a;
- }
+.posted-jobs-page > .p-4 {
+    width: min(1200px, 100%);
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 4rem !important;
+}
 
- @media (min-width: 280px) and (max-width: 912px) {
-     .body {
-         height: 100vh;
-         overflow-y: auto;
-     }
- }
+.posted-jobs-page > .p-4 > .flex:first-child {
+    align-items: end;
+    gap: 1rem;
+    margin-bottom: .75rem;
+}
 
- @media (width: 912px) {
-     .screenSize912 {
-         margin-left: 35px;
-     }
- }
+.posted-jobs-page .job-title {
+    width: auto !important;
+    margin: 0;
+    padding: 0 !important;
+    color: #273238 !important;
+    font-size: clamp(2rem, 4vw, 3.5rem) !important;
+    letter-spacing: -.06em;
+    background: transparent !important;
+}
 
- @media (width: 540px) {
-     .screenSize540 {
-         margin-left: 70px;
-     }
- }
+.posted-jobs-page .pagination {
+    color: #6b777b;
+    font-size: .85rem;
+    font-weight: 750;
+    letter-spacing: .04em;
+}
 
- @media (width: 280px) {
-     .screenSize280 {
-         margin-top: 50px;
-     }
+.posted-jobs-page .body {
+    gap: 1.35rem !important;
+    margin-top: 1.25rem !important;
+}
 
-     .logoScreenSize280 {
-         margin-bottom: 20px;
-     }
- }
+.posted-jobs-page .body > div {
+    max-width: none !important;
+    overflow: hidden;
+    border: 1px solid #e7e0d8 !important;
+    border-radius: 1.1rem !important;
+    box-shadow: 0 12px 30px rgb(39 50 56 / 8%) !important;
+    transition: transform .22s ease, box-shadow .22s ease;
+}
+
+.posted-jobs-page .body > div:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 34px rgb(39 50 56 / 14%) !important;
+}
+
+.posted-jobs-page .body > div > div:first-child {
+    height: 12rem;
+    background: #edf2f1;
+}
+
+.posted-jobs-page .body > div > div:first-child img {
+    transition: transform .35s ease;
+}
+
+.posted-jobs-page .body > div:hover > div:first-child img {
+    transform: scale(1.035);
+}
+
+.posted-jobs-page .body > div > div:last-child {
+    min-height: 20rem;
+    padding: 1.3rem !important;
+    background: #fffdfb !important;
+}
+
+.posted-jobs-page .body h5 {
+    color: #273238 !important;
+    font-size: 1.25rem !important;
+    line-height: 1.12;
+}
+
+.posted-jobs-page .body p {
+    color: #617074 !important;
+    font-size: .8rem !important;
+    line-height: 1.45;
+}
+
+.posted-jobs-page .body p:nth-of-type(2),
+.posted-jobs-page .body p:nth-of-type(3) {
+    color: #849095 !important;
+    font-size: .7rem !important;
+    font-weight: 700 !important;
+}
+
+.posted-jobs-page .body a[href$='/update'],
+.posted-jobs-page .body button {
+    border-radius: .7rem !important;
+    font-weight: 750;
+    transition: transform .2s ease, filter .2s ease;
+}
+
+.posted-jobs-page .body a[href$='/update'] {
+    background: #273238 !important;
+}
+
+.posted-jobs-page .body button {
+    background: #d65365 !important;
+}
+
+.posted-jobs-page .body a[href$='/update']:hover,
+.posted-jobs-page .body button:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.06);
+}
+
+.posted-jobs-page nav button,
+.posted-jobs-page > .p-4 > .flex:last-child button {
+    min-width: 2.4rem;
+    border-radius: .6rem;
+    color: #273238;
+}
+
+.posted-jobs-page #popup-modal > div > div {
+    border-radius: 1.15rem;
+    box-shadow: 0 24px 60px rgb(39 50 56 / 24%);
+}
+
+.posted-jobs-page #popup-modal h3 {
+    color: #273238;
+    font-weight: 700;
+}
+
+.posted-jobs-page #popup-modal button:first-of-type {
+    border-radius: .65rem;
+    background: #d65365;
+}
+
+@media (max-width: 640px) {
+    .posted-jobs-page > .p-4 {
+        padding: 1.5rem 1rem 3rem !important;
+    }
+
+    .posted-jobs-page > .p-4 > .flex:first-child {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .posted-jobs-page .body > div > div:last-child {
+        min-height: auto;
+    }
+}
