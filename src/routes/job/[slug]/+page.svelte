@@ -28,6 +28,20 @@ onMount(async () => {
   showModal.set(false)
  }
 
+ function scrollToApplication() {
+  document.getElementById('how-to-apply')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+ }
+
+ async function shareJob() {
+  const shareData = { title: data.jobs.title, text: `${data.jobs.title} at ${data.jobs.employer}`, url: window.location.href };
+  try {
+    if (navigator.share) await navigator.share(shareData);
+    else await navigator.clipboard.writeText(window.location.href);
+  } catch (error) {
+    // Dismissing the native sharing sheet is not an application error.
+  }
+ }
+
 onMount(() => {
     const handleScroll = () => {
       // Check if screen width is at least 768px
@@ -95,6 +109,7 @@ async function deleteRecord(id){
 
 <section class="job-detail-hero">
   <div class="job-detail-hero-content">
+	<a class="job-detail-back" href="/Home">← Back to all jobs</a>
   <div class="flex justify-between display">
 	<h1 class="text-3xl font-extrabold job-title p-4 text-white w-64 sm:w-96 rounded-lg capitalize">{data.jobs.title}</h1>
     <!-- Show edit button for user that has log in and check whether the user is the user that create this job post-->
@@ -203,7 +218,7 @@ async function deleteRecord(id){
     <div class="job-detail-layout">
         <article class="job-detail-content">
           <div class="slide-up">
-            <h2 class="text-xl font-semibold mb-2 text-black">Description</h2>
+			<h2 class="text-xl font-semibold mb-2 text-black">About the role</h2>
             <p class="border border-pink-600 mb-4"></p>
             <div class="border rounded-lg p-4 bg-white border-slate-400 shadow-xl"> 
               <span class="text-xl md:text-lg"><SvelteMarkdown source={data.jobs.description}/></span>
@@ -220,7 +235,7 @@ async function deleteRecord(id){
           </div>
 
             <div class="mt-6" />
-          <div id="slideUpDiv1" class="slide-up2">
+		  <div id="how-to-apply" class="slide-up2">
             <h2 class="text-xl font-semibold text-black mb-2">How to Apply?</h2>
             <p class="border border-pink-600 mb-4"></p>
             <div class="border rounded-lg p-4 bg-white border-slate-400 shadow-xl">
@@ -230,6 +245,9 @@ async function deleteRecord(id){
         </article>
 
         <aside class="job-detail-sidebar">
+		  <button type="button" class="job-detail-apply" on:click={scrollToApplication}>Apply now ↗</button>
+		  <button type="button" class="job-detail-share" on:click={shareJob}>↗ Share</button>
+		  <h2 class="job-detail-glance">At a glance</h2>
           <div class="slide-up2">
             <h2 class="text-xl font-semibold mb-2">Location</h2>
             <p class="border md:border-orange-400 border-pink-600 mb-4"></p>

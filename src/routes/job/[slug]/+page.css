@@ -1,18 +1,20 @@
 /* Presentation only: job data, ownership checks, edit/delete, and application details remain unchanged. */
 .job-detail-page { min-height: 100vh; color: #273238; background: #f8f5f1; }
-.job-detail-hero { min-height: 18.75rem; color: #fff; background: linear-gradient(90deg, rgb(16 39 28 / 91%), rgb(16 39 28 / 54%), rgb(16 39 28 / 12%)), url('/rift-job-hero.png') center / cover no-repeat; }
-.job-detail-hero-content { width: min(72.5rem, 100%); margin: 0 auto; padding: 2.5rem 1.5rem; }
-.job-detail-page .display { min-height: 13rem; align-items: flex-end; gap: 1rem; }
-.job-detail-page .job-title { width: min(43rem, 100%) !important; margin: 0; padding: 0 !important; color: #fff !important; font-size: clamp(2.4rem, 5vw, 4.4rem) !important; line-height: .98; letter-spacing: -.065em; background: transparent !important; text-wrap: balance; }
+.job-detail-hero { min-height: 32.5rem; color: #fff; background: linear-gradient(90deg, rgb(16 39 28 / 91%), rgb(16 39 28 / 54%), rgb(16 39 28 / 12%)), url('/rift-job-hero.png') center / cover no-repeat; }
+.job-detail-hero-content { width: min(100%, 144rem); margin: 0 auto; padding: 3.5rem 3rem; }
+.job-detail-back { display: inline-flex; color: #fff; font-size: 1.05rem; font-weight: 800; text-decoration: none; }
+.job-detail-back:hover { text-decoration: underline; }
+.job-detail-page .display { min-height: 23rem; align-items: flex-end; gap: 1rem; }
+.job-detail-page .job-title { width: min(100%, 112rem) !important; margin: 0; padding: 0 !important; color: #fff !important; font-size: clamp(3rem, 5.25vw, 5.8rem) !important; line-height: .98; letter-spacing: -.065em; background: transparent !important; text-wrap: balance; }
 .job-detail-page .display > div { flex-shrink: 0; }
 .job-detail-page .display a, .job-detail-page .display button { border-radius: .7rem !important; font-weight: 750; transition: transform .2s ease, filter .2s ease; }
 .job-detail-page .display a:hover, .job-detail-page .display button:hover { transform: translateY(-2px); filter: brightness(1.06); }
-.job-detail-meta { margin: .4rem 0 0; color: rgb(255 255 255 / 82%); font-size: 1rem; font-weight: 700; letter-spacing: .04em; }
-.job-detail-layout { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) 20rem; align-items: start; width: min(72.5rem, calc(100% - 3rem)); gap: 1.4rem; margin: -1.55rem auto 0; padding-bottom: 3.75rem; }
+.job-detail-meta { margin: .6rem 0 0; color: rgb(255 255 255 / 86%); font-size: 1.15rem; font-weight: 700; letter-spacing: .01em; }
+.job-detail-layout { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) 34rem; align-items: start; width: min(100%, 144rem); gap: 2.25rem; margin: -2.6rem auto 0; padding: 0 3rem 3.75rem; }
 .job-detail-content, .job-detail-sidebar { border: 1px solid #e7e0d8; border-radius: 1rem; background: #fffdfb; box-shadow: 0 10px 28px rgb(39 50 56 / 7%); }
-.job-detail-content { padding: 1.5rem; }
-.job-detail-sidebar { position: sticky; top: 1rem; padding: 1.35rem; }
-.job-detail-page h2 { margin: 0 0 .8rem; color: #273238 !important; font-size: .78rem !important; font-weight: 850 !important; letter-spacing: .13em; text-transform: uppercase; }
+.job-detail-content { padding: 2.1rem; }
+.job-detail-sidebar { position: sticky; top: 1rem; padding: 1.7rem; }
+.job-detail-page h2 { margin: 0 0 .9rem; color: #273238 !important; font-size: 1.05rem !important; font-weight: 850 !important; letter-spacing: -.03em; text-transform: none; }
 .job-detail-content > div > p.border, .job-detail-sidebar > div > p.border { width: 3.5rem; margin-bottom: 1rem; border-color: #e66480 !important; border-width: 2px; }
 .job-detail-content > div > div { padding: 0 !important; border: 0 !important; background: transparent !important; box-shadow: none !important; color: #455258; line-height: 1.75; }
 .job-detail-content > div + div { margin-top: 2rem; }
@@ -21,5 +23,11 @@
 .job-detail-sidebar > div + div { margin-top: 1.5rem; }
 .job-detail-sidebar > div > p:not(.border) { margin: 0; padding: 0 0 1rem !important; border: 0 !important; border-bottom: 1px solid #e7e0d8 !important; border-radius: 0 !important; background: transparent !important; box-shadow: none !important; color: #455258; font-size: 1rem !important; font-weight: 650; line-height: 1.55; }
 .job-detail-page .job-type { margin: 0 .45rem .45rem 0 !important; border: 1px solid #dce3e3; border-radius: 999px !important; background: #eaf1f0 !important; color: #273238 !important; font-size: .86rem !important; font-weight: 750; }
-@media (max-width: 800px) { .job-detail-hero { min-height: 16rem; background-position: 59% center; } .job-detail-hero-content { padding: 1.5rem 1rem; } .job-detail-page .display { min-height: 12rem; align-items: flex-end; } .job-detail-page .job-title { font-size: clamp(2.2rem, 11vw, 3.5rem) !important; } .job-detail-layout { grid-template-columns: 1fr; width: min(100% - 2rem, 40rem); margin-top: -1rem; padding-bottom: 2.5rem; } .job-detail-sidebar { position: static; } }
+.job-detail-apply, .job-detail-share { width: 100%; border-radius: .8rem; font-size: 1.05rem; font-weight: 850; }
+.job-detail-apply { margin-bottom: .95rem; padding: 1.15rem; background: #273238; color: #fff; }
+.job-detail-apply:hover { background: #d65391; }
+.job-detail-share { margin-bottom: 1rem; padding: .9rem; border: 1px solid #ead8ca; background: #fffdfb; color: #273238; }
+.job-detail-share:hover { background: #f7f0eb; }
+.job-detail-glance { margin: .2rem 0 1.75rem !important; font-size: 1.8rem !important; }
+@media (max-width: 1000px) { .job-detail-hero { min-height: 25rem; background-position: 59% center; } .job-detail-hero-content { padding: 2rem 1.25rem; } .job-detail-page .display { min-height: 17rem; align-items: flex-end; } .job-detail-page .job-title { font-size: clamp(2.2rem, 8vw, 4.5rem) !important; } .job-detail-layout { grid-template-columns: 1fr; width: min(100% - 2rem, 48rem); margin-top: -1rem; padding: 0 0 2.5rem; } .job-detail-sidebar { position: static; } }
 @media (max-width: 560px) { .job-detail-page .display { align-items: flex-start; flex-direction: column-reverse; justify-content: flex-end; } .job-detail-page .display > div { align-self: flex-end; } .job-detail-page .display .inline-flex, .job-detail-page .display button { width: 2.8rem; min-width: 2.8rem; padding: 0 !important; font-size: 0; } .job-detail-page .display svg { margin: 0 !important; } }
