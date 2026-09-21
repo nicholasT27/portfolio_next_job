@@ -272,7 +272,7 @@
 	<script src="/aws-sdk-s3.min.js"></script>
 </svelte:head>
 
-<div class="flex h-screen w-screen">
+<div class="form-page-shell flex h-screen w-screen">
 	<!-- Flip Card Division -->
 	<div id="flip-card" class="sm:w-6/12 w-full h-full">
 		<div id="flip-card-inner" class="flip-card-inner">
@@ -299,6 +299,8 @@
 						</svg>
 					</div>
 					<h1>Edit job</h1>
+					<p class="form-page-intro">Keep the opportunity<br />moving forward.</p>
+					<p class="form-page-note">Refresh the details that help the right people find you.</p>
 				</div>
 
 				<button
@@ -412,7 +414,7 @@
 								</h2>
 							</section>
 
-							<p class="mt-5 text-xl text-gray-600">
+							<p class="form-public-note mt-5 text-xl">
 								This information will be displayed publicly so be careful what you share.
 							</p>
 						</div>
@@ -1035,7 +1037,7 @@
 									Job Details
 								</h2>
 							</div>
-							<p class="mt-1 text-sm text-gray-600">
+									<p class="form-public-note mt-1 text-sm">
 								This information will be displayed publicly so be careful what you share.
 							</p>
 
@@ -1605,4 +1607,40 @@
 	:global(.carousel-item > div) { max-width: 42rem; margin: auto; }
 	:global(.carousel-indicators), :global(.carousel-indicator) { gap: .45rem; }
 	@media (max-width: 767px) { :global(#flip-card), :global(.formDivision) { width: 100% !important; } :global(.formDivision) { padding: 1rem !important; } }
+
+	/* Desktop glass-panel composition. The carousel steps, field names, uploads and update/delete handlers are unchanged. */
+	@media (min-width: 768px) {
+		:global(.form-page-shell) { position: relative; min-height: 100svh; overflow: hidden; background: #273238; isolation: isolate; }
+		:global(.form-page-shell > #flip-card) { position: absolute; inset: 0; z-index: 0; width: 100% !important; height: 100%; }
+		:global(.form-page-shell #flip-card-inner), :global(.form-page-shell .flip-card-front) { width: 100%; height: 100%; }
+		:global(.form-page-shell .flip-card-front img) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+		:global(.form-page-shell .flip-card-front::after) { background: linear-gradient(90deg, rgb(28 35 48 / 81%) 0%, rgb(42 41 58 / 49%) 48%, rgb(205 105 119 / 21%) 100%) !important; }
+		:global(.form-page-shell .flip-card-front > .absolute) { top: 50% !important; left: clamp(3rem, 8vw, 9rem) !important; margin: 0 !important; transform: translateY(-42%); max-width: 32rem; }
+		:global(.form-page-shell .flip-card-front h1) { font-size: clamp(4rem, 6vw, 6.6rem) !important; letter-spacing: -.07em; }
+		:global(.form-page-shell .form-page-intro) { margin: 1.35rem 0 0; color: rgb(255 255 255 / 88%); font-size: clamp(1.4rem, 2.1vw, 2.2rem); font-weight: 450; line-height: 1.28; letter-spacing: -.025em; }
+		:global(.form-page-shell .form-page-note) { margin-top: 1.4rem; color: rgb(255 255 255 / 76%); font-size: 1rem; font-weight: 500; }
+		:global(.form-page-shell > .formDivision) { position: absolute !important; z-index: 2; top: 50%; right: clamp(2.5rem, 7vw, 9rem); width: min(46rem, 47vw) !important; height: auto !important; max-height: calc(100svh - 5rem); margin: 0 !important; padding: clamp(1.5rem, 2.7vw, 3rem) !important; transform: translateY(-50%); overflow-x: hidden; overflow-y: auto; border: 1px solid rgb(255 255 255 / 52%); border-radius: 1.5rem; background: rgb(255 255 255 / 22%) !important; box-shadow: 0 2rem 5rem rgb(10 18 27 / 28%); backdrop-filter: blur(22px); }
+		:global(.form-page-shell > .formDivision > div), :global(.form-page-shell > .formDivision .slide-down), :global(.form-page-shell > .formDivision form) { width: 100% !important; }
+		:global(.form-page-shell .carousel-item > div) { border: 0 !important; border-radius: 0 !important; background: transparent !important; box-shadow: none !important; }
+		:global(.form-page-shell button[type='submit']) { background: #ef3f82 !important; }
+	}
+
+	/* Match the approved login motion: hero enters from the left, entire form panel from the right. */
+	:global(.form-page-shell .flip-card-front .slideRight) { animation: edit-job-hero-in .6s cubic-bezier(.22, 1, .36, 1) both; }
+	:global(.form-page-shell .formDivision .slide-down) { animation: none; }
+	@keyframes edit-job-hero-in { from { opacity: 0; transform: translate(-2.5rem, -50%); } to { opacity: 1; transform: translate(0, -50%); } }
+	@keyframes edit-job-panel-in { from { opacity: 0; transform: translate(2.5rem, -50%); } to { opacity: 1; transform: translate(0, -50%); } }
+	@media (min-width: 768px) {
+		:global(.form-page-shell .flip-card-front > .absolute) { transform: translateY(-50%) !important; }
+		:global(.form-page-shell > .formDivision) { animation: edit-job-panel-in .55s cubic-bezier(.22, 1, .36, 1) both; }
+	}
+
+	/* Preserve contrast on the light glass panel and keep job-type controls compact. */
+	:global(.form-page-shell .carousel-item), :global(.form-page-shell .carousel-item h2), :global(.form-page-shell .carousel-item h3), :global(.form-page-shell .carousel-item label), :global(.form-page-shell .carousel-item p), :global(.form-page-shell .carousel-item li), :global(.form-page-shell .carousel-item span) { color: #fff !important; text-shadow: 0 1px 2px rgb(18 25 35 / 38%); }
+	:global(.form-page-shell .carousel-item input), :global(.form-page-shell .carousel-item textarea) { color: #273238 !important; text-shadow: none; }
+	:global(.form-page-shell input[type='checkbox']) { appearance: none; width: 1.25rem !important; min-width: 1.25rem; height: 1.25rem !important; min-height: 1.25rem !important; margin: 0 .55rem 0 0 !important; padding: 0 !important; border: 2px solid rgb(255 255 255 / 88%) !important; border-radius: 999px !important; background: rgb(255 255 255 / 25%) !important; box-shadow: none !important; vertical-align: middle; }
+	:global(.form-page-shell input[type='checkbox']:checked) { border-color: #ef3f82 !important; background: #ef3f82 !important; box-shadow: inset 0 0 0 4px rgb(255 255 255 / 88%) !important; }
+	:global(.form-page-shell .form-public-note) { color: #fff !important; font-weight: 650; text-shadow: 0 1px 2px rgb(18 25 35 / 45%); }
+	:global(.form-page-shell label[for='flipCard-file-upload'] span), :global(.form-page-shell label[for='file-upload'] span) { color: #273238 !important; text-shadow: none !important; }
+	:global(.form-page-shell .carousel-indicators) { margin-top: 2rem !important; padding-top: .8rem !important; transform: translateY(2rem); }
 </style>

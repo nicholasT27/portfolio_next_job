@@ -12,4 +12,21 @@
 .flip-card-front > :not(img) { z-index: 1; }
 .flip-card-back input:focus { border-color: #d65391 !important; box-shadow: 0 0 0 3px rgb(214 83 145 / 14%) !important; }
 
+/* Shared glass-form composition; all existing profile update controls remain in place. */
+@media (min-width: 768px) {
+    .form-page-shell { position: relative; min-height: 100svh; overflow: hidden; background: #273238; isolation: isolate; }
+    .form-page-shell > #flip-card { position: absolute; inset: 0; z-index: 0; width: 100% !important; height: 100%; }
+    .form-page-shell #flip-card-inner, .form-page-shell .flip-card-front { width: 100%; height: 100%; }
+    .form-page-shell .flip-card-front img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .form-page-shell .flip-card-front::after { background: linear-gradient(90deg, rgb(28 35 48 / 80%) 0%, rgb(42 41 58 / 48%) 48%, rgb(205 105 119 / 22%) 100%) !important; }
+    .form-page-shell .flip-card-front > .absolute { top: 50% !important; left: clamp(3rem, 8vw, 9rem) !important; margin: 0 !important; transform: translateY(-50%); max-width: 32rem; }
+    .form-page-shell .flip-card-front h1 { font-size: clamp(4rem, 6.2vw, 6.8rem) !important; letter-spacing: -.07em; }
+    .form-page-shell .form-page-intro { margin: 1.35rem 0 0; color: rgb(255 255 255 / 88%); font-size: clamp(1.4rem, 2.1vw, 2.2rem); font-weight: 450; line-height: 1.28; letter-spacing: -.025em; }
+    .form-page-shell .form-page-note { margin-top: 1.4rem; color: rgb(255 255 255 / 76%); font-size: 1rem; font-weight: 500; }
+    .form-page-shell > .formDivision { position: absolute !important; z-index: 2; top: 50%; right: clamp(2.5rem, 7vw, 9rem); width: min(31rem, 43vw) !important; height: auto !important; max-height: calc(100svh - 6rem); margin: 0 !important; padding: clamp(1.25rem, 2.2vw, 2rem) !important; transform: translateY(-50%); overflow-x: hidden; overflow-y: auto; border: 1px solid rgb(255 255 255 / 52%); border-radius: 1.5rem; background: rgb(255 255 255 / 22%) !important; box-shadow: 0 2rem 5rem rgb(10 18 27 / 24%); backdrop-filter: blur(22px); animation: profile-panel-in .55s cubic-bezier(.22, 1, .36, 1) both; }
+    .form-page-shell .formDivision > div { width: 100% !important; height: auto !important; }
+}
 
+.form-page-shell .flip-card-front .slideRight { animation: profile-hero-in .6s cubic-bezier(.22, 1, .36, 1) both; }
+@keyframes profile-hero-in { from { opacity: 0; transform: translate(-2.5rem, -50%); } to { opacity: 1; transform: translate(0, -50%); } }
+@keyframes profile-panel-in { from { opacity: 0; transform: translate(2.5rem, -50%); } to { opacity: 1; transform: translate(0, -50%); } }

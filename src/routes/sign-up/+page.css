@@ -16,6 +16,10 @@
 .flip-card-front a { font-weight: 800; letter-spacing: .02em; }
 .flip-card-back-form h2 { color: #273238 !important; letter-spacing: -.045em; }
 
+/* Keep the sign-in prompt readable over the translucent panel. */
+.formDivision .text-gray-500 { color: #fff !important; }
+.formDivision .text-gray-500 a { color: #fff !important; font-weight: 750; }
+
 /* Recompose the existing sign-up form into an editorial two-panel page. */
 #flip-card { width: 42% !important; overflow: hidden; }
 .formDivision { width: 58% !important; padding: clamp(1.5rem, 4vw, 4.5rem) !important; }
@@ -33,3 +37,26 @@
         height: 550px;
     }
 }
+
+/* Full-screen presentation inspired by the approved reference; account creation, validation and upload remain unchanged. */
+@media (min-width: 768px) {
+    .form-page-shell { position: relative; min-height: 100svh; overflow: hidden; background: #273238; isolation: isolate; }
+    .form-page-shell > #flip-card { position: absolute; inset: 0; z-index: 0; width: 100% !important; height: 100%; }
+    .form-page-shell #flip-card-inner, .form-page-shell .flip-card-front { width: 100%; height: 100%; }
+    .form-page-shell .flip-card-front img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .form-page-shell .flip-card-front::after { background: linear-gradient(90deg, rgb(28 35 48 / 80%) 0%, rgb(42 41 58 / 48%) 48%, rgb(205 105 119 / 22%) 100%) !important; }
+    .form-page-shell .flip-card-front > .absolute { top: 50% !important; left: clamp(3rem, 8vw, 9rem) !important; margin: 0 !important; transform: translateY(-50%); max-width: 32rem; }
+    .form-page-shell .flip-card-front h1 { font-size: clamp(4rem, 6.2vw, 6.8rem) !important; letter-spacing: -.07em; }
+    .form-page-shell .form-page-intro { margin: 1.35rem 0 0; color: rgb(255 255 255 / 88%); font-size: clamp(1.4rem, 2.1vw, 2.2rem); font-weight: 450; line-height: 1.28; letter-spacing: -.025em; }
+    .form-page-shell .form-page-note { margin-top: 1.4rem; color: rgb(255 255 255 / 76%); font-size: 1rem; font-weight: 500; }
+    .form-page-shell > .formDivision { position: absolute !important; z-index: 2; top: 50%; right: clamp(2.5rem, 7vw, 9rem); width: min(31rem, 43vw) !important; height: auto !important; max-height: calc(100svh - 6rem); margin: 0 !important; padding: clamp(1.25rem, 2.2vw, 2rem) !important; transform: translateY(-50%); overflow-x: hidden; overflow-y: auto; border: 1px solid rgb(255 255 255 / 52%); border-radius: 1.5rem; background: rgb(255 255 255 / 22%) !important; box-shadow: 0 2rem 5rem rgb(10 18 27 / 24%); backdrop-filter: blur(22px); animation: account-panel-in .55s cubic-bezier(.22, 1, .36, 1) both; }
+    .form-page-shell > .formDivision > div, .form-page-shell > .formDivision .slide-down { width: 100% !important; }
+    .form-page-shell > .formDivision > div > div, .form-page-shell > .formDivision .slide-down > form { width: 100% !important; }
+    .form-page-shell .flip-card-back-form { border: 0 !important; border-radius: 0 !important; background: transparent !important; box-shadow: none !important; }
+    .form-page-shell .flip-card-back-form button[type='submit'] { background: #ef3f82 !important; }
+}
+
+.form-page-shell .flip-card-front .slideRight { animation: account-hero-in .6s cubic-bezier(.22, 1, .36, 1) both; }
+.form-page-shell .formDivision .slide-down { animation: none; }
+@keyframes account-hero-in { from { opacity: 0; transform: translate(-2.5rem, -50%); } to { opacity: 1; transform: translate(0, -50%); } }
+@keyframes account-panel-in { from { opacity: 0; transform: translate(2.5rem, -50%); } to { opacity: 1; transform: translate(0, -50%); } }

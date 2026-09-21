@@ -47,7 +47,7 @@
 	<title>Login | Next Jobs</title>
 </svelte:head>
 
-<div class="flex h-screen w-screen">
+<div class="form-page-shell flex h-screen w-screen">
 	<div id="flip-card" class="sm:w-6/12 w-full h-full">
 		<div id="flip-card-inner" class="flip-card-inner">
 			<div class="flip-card-front w-full h-full">
@@ -96,6 +96,8 @@
 						</svg>
 					</div>
 					<h1>Log In</h1>
+					<p class="form-page-intro">Connect with opportunities<br />that move you forward.</p>
+					<p class="form-page-note">Find your next job. A brighter tomorrow.</p>
 				</div>
 				<img src="background-img3.png" alt="" class="w-full h-full object-cover" />
 			</div>

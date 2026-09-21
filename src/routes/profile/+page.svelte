@@ -157,7 +157,7 @@
 	<script src="/aws-sdk-s3.min.js"></script>
 </svelte:head>
 
-<div class="flex h-screen w-screen">
+<div class="form-page-shell flex h-screen w-screen">
 	<!-- Profile Flip Card Division -->
 
 	<!-- Image div -->
@@ -207,6 +207,8 @@
 						</svg>
 					</div>
 					<h1>Dashboard</h1>
+					<p class="form-page-intro">Your profile, ready<br />for what is next.</p>
+					<p class="form-page-note">Keep your details current and your opportunities open.</p>
 				</div>
 				<img src="background-img1.png" alt="" class="w-full h-full object-cover" />
 			</div>

@@ -89,7 +89,7 @@
 	<script src="/aws-sdk-s3.min.js"></script>
 </svelte:head>
 
-<div class="flex h-screen w-screen">
+<div class="form-page-shell flex h-screen w-screen">
 	<!-- Sign Up Section -->
 	<div id="flip-card" class="sm:w-6/12 w-full h-full">
 		<div id="flip-card-inner" class="flip-card-inner">
@@ -158,6 +158,8 @@
 						</svg>
 					</div>
 					<h1>Sign Up</h1>
+					<p class="form-page-intro">Your next opportunity<br />starts with one step.</p>
+					<p class="form-page-note">Create your profile and make the next move yours.</p>
 				</div>
 				<!-- Image div -->
 				<img src="background-img4.png" alt="" class="w-full h-full object-cover" />
