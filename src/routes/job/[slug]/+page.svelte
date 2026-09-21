@@ -89,7 +89,7 @@ async function deleteRecord(id){
   <title>Job Details | Next Jobs</title>
 </svelte:head>
 
-<div class="bg-gradient-to-bl from-pink-500 to-orange-400">
+<div class="job-detail-page bg-gradient-to-bl from-pink-500 to-orange-400">
 
   <NavBar />
 

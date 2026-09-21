@@ -1,20 +1,160 @@
-@media (min-width: 768px) and (max-width: 912px) {
-    .body {
-        height: 100vh;
-        overflow-y: auto;
-    }
+/* Job detail presentation only — data, ownership checks, and actions remain in +page.svelte. */
+.job-detail-page {
+    min-height: 100vh;
+    color: #273238;
+    background: #f8f5f1;
 }
 
-footer,
-.job-title,
-.job-type {
-    background-color: #20333a;
+.job-detail-page .body {
+    width: min(1120px, 100%);
+    margin: 0 auto;
+    padding: 2.25rem 1.5rem 4rem !important;
 }
 
-@media (max-width: 280px) {
-    .display {
-        display: border flex;
-        flex-direction: column;
+/* The job title sits on the same editorial image language as the home hero. */
+.job-detail-page .display {
+    position: relative;
+    min-height: 14.5rem;
+    align-items: flex-end;
+    gap: 1rem;
+    padding: 2rem;
+    overflow: hidden;
+    border-radius: 1.35rem;
+    background:
+        linear-gradient(90deg, rgba(24, 35, 39, .9) 0%, rgba(24, 35, 39, .62) 46%, rgba(24, 35, 39, .18) 100%),
+        url('/rift-job-hero.png') 68% 38% / cover no-repeat;
+    box-shadow: 0 20px 45px rgba(39, 50, 56, .15);
+}
+
+.job-detail-page .job-title {
+    position: relative;
+    z-index: 1;
+    width: min(43rem, 100%) !important;
+    margin: 0;
+    padding: 0 !important;
+    color: #fff !important;
+    font-size: clamp(2rem, 5vw, 4.5rem) !important;
+    line-height: .98;
+    letter-spacing: -.065em;
+    background: transparent !important;
+    text-wrap: balance;
+}
+
+.job-detail-page .display > div {
+    position: relative;
+    z-index: 1;
+    flex-shrink: 0;
+}
+
+.job-detail-page .display a,
+.job-detail-page .display button {
+    border-radius: .7rem !important;
+    font-weight: 750;
+    transition: transform .2s ease, filter .2s ease;
+}
+
+.job-detail-page .display a:hover,
+.job-detail-page .display button:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.06);
+}
+
+.job-detail-page .body > p {
+    margin: 1.25rem .3rem 0;
+    color: #69757a;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: .04em;
+}
+
+.job-detail-page .body > .flex:last-of-type {
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.job-detail-page h2 {
+    color: #273238 !important;
+    font-size: .76rem !important;
+    font-weight: 800 !important;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+}
+
+.job-detail-page .basis-2\/3 > div > p,
+.job-detail-page .basis-1\/3 > div > p.border {
+    width: 3.5rem;
+    margin-bottom: .85rem;
+    border-color: #e66480 !important;
+    border-width: 2px;
+}
+
+.job-detail-page .basis-2\/3 > div > div,
+.job-detail-page .basis-1\/3 > div > p:not(.border) {
+    border: 1px solid #e7e0d8 !important;
+    border-radius: 1rem !important;
+    background: #fff !important;
+    box-shadow: 0 10px 28px rgba(39, 50, 56, .07) !important;
+}
+
+.job-detail-page .basis-2\/3 > div > div {
+    padding: 1.5rem !important;
+    color: #455258;
+    line-height: 1.75;
+}
+
+.job-detail-page .basis-1\/3 > div > p:not(.border) {
+    padding: 1.15rem 1.25rem !important;
+    color: #455258;
+    font-weight: 650;
+}
+
+.job-detail-page .job-type {
+    margin-left: 0 !important;
+    margin-right: .55rem;
+    border: 1px solid #dce3e3;
+    border-radius: 999px !important;
+    background: #eaf1f0 !important;
+    color: #273238 !important;
+    font-size: .86rem !important;
+    font-weight: 750;
+}
+
+@media (max-width: 640px) {
+    .job-detail-page .body {
+        padding: 1.15rem 1rem 3rem !important;
     }
 
+    .job-detail-page .display {
+        min-height: 17rem;
+        align-items: flex-end;
+        padding: 1.5rem;
+        background-position: 62% center;
+    }
+
+    .job-detail-page .display > div {
+        position: absolute;
+        top: 1rem;
+        right: .75rem;
+    }
+
+    .job-detail-page .display > div > div {
+        display: flex;
+        width: auto;
+    }
+
+    .job-detail-page .display .inline-flex,
+    .job-detail-page .display button {
+        width: 2.85rem;
+        min-width: 2.85rem;
+        padding: 0 !important;
+        font-size: 0;
+    }
+
+    .job-detail-page .display svg {
+        margin: 0 !important;
+    }
+
+    .job-detail-page .body > .flex:last-of-type {
+        gap: 0;
+    }
 }
