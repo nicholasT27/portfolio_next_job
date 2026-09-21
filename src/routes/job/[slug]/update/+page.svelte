@@ -1643,4 +1643,10 @@
 	:global(.form-page-shell .form-public-note) { color: #fff !important; font-weight: 650; text-shadow: 0 1px 2px rgb(18 25 35 / 45%); }
 	:global(.form-page-shell label[for='flipCard-file-upload'] span), :global(.form-page-shell label[for='file-upload'] span) { color: #273238 !important; text-shadow: none !important; }
 	:global(.form-page-shell .carousel-indicators) { margin-top: 2rem !important; padding-top: .8rem !important; transform: translateY(2rem); }
+	@media (max-width: 767px) {
+		:global(.form-page-shell .flip-card-front > .absolute) { top: 50% !important; left: 1.5rem !important; transform: translateY(-50%) !important; }
+		:global(.form-page-shell .flip-card-front h1) { font-size: clamp(2.4rem, 12vw, 3.35rem) !important; }
+		:global(.form-page-shell .form-page-intro) { max-width: 16rem; margin-top: .85rem; font-size: 1.15rem; font-weight: 650; line-height: 1.25; }
+		:global(.form-page-shell .form-page-note) { max-width: 16rem; margin-top: .8rem; font-size: .85rem; line-height: 1.4; }
+	}
 </style>

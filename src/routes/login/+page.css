@@ -126,6 +126,11 @@
 	.flip-card-back > div > div {
 		margin-top: 5.5rem !important;
 	}
+
+	.form-page-shell .flip-card-front > .absolute { top: 50% !important; left: 1.5rem !important; transform: translateY(-50%) !important; }
+	.form-page-shell .flip-card-front h1 { font-size: clamp(2.4rem, 12vw, 3.35rem) !important; }
+	.form-page-shell .form-page-intro { max-width: 16rem; margin-top: .85rem; font-size: 1.15rem; font-weight: 650; line-height: 1.25; }
+	.form-page-shell .form-page-note { max-width: 16rem; margin-top: .8rem; font-size: .85rem; line-height: 1.4; }
 }
 
 /* Full-screen presentation inspired by the approved reference: the original login form remains untouched. */

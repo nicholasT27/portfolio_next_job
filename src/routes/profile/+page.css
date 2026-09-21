@@ -30,3 +30,10 @@
 .form-page-shell .flip-card-front .slideRight { animation: profile-hero-in .6s cubic-bezier(.22, 1, .36, 1) both; }
 @keyframes profile-hero-in { from { opacity: 0; transform: translate(-2.5rem, -50%); } to { opacity: 1; transform: translate(0, -50%); } }
 @keyframes profile-panel-in { from { opacity: 0; transform: translate(2.5rem, -50%); } to { opacity: 1; transform: translate(0, -50%); } }
+
+@media (max-width: 767px) {
+    .form-page-shell .flip-card-front > .absolute { top: 50% !important; left: 1.5rem !important; transform: translateY(-50%) !important; }
+    .form-page-shell .flip-card-front h1 { font-size: clamp(2.4rem, 12vw, 3.35rem) !important; }
+    .form-page-shell .form-page-intro { max-width: 16rem; margin-top: .85rem; font-size: 1.15rem; font-weight: 650; line-height: 1.25; }
+    .form-page-shell .form-page-note { max-width: 16rem; margin-top: .8rem; font-size: .85rem; line-height: 1.4; }
+}
