@@ -238,7 +238,18 @@
 <div class="flex flex-col">
 	<NavBar />
 
-	<div class="flex p-2 m-2 space-x-5 flex-row justify-between">
+	<!-- Visual-only hero. Existing search, filters, pagination and job data stay unchanged below. -->
+	<section class="home-hero" aria-labelledby="home-hero-title">
+		<div class="home-hero-shade"></div>
+		<div class="home-hero-copy">
+			<p>CAREERS, MADE CLEARER</p>
+			<h1 id="home-hero-title">Find work that feels like your next move.</h1>
+			<span>Explore roles from teams building what’s next.</span>
+			<a href="#open-roles">Find a job</a>
+		</div>
+	</section>
+
+	<div id="open-roles" class="flex p-2 m-2 space-x-5 flex-row justify-between">
 		<button
 			type="button"
 			class="items-center justify-center p-0.5 mb-2 h-10 mr-2 text-white text-sm font-medium rounded-lg bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl"
@@ -895,4 +906,17 @@
 
 <style>
 	@import '../Home/+page.css';
+
+	/* Visual-only hero; the job listing and filtering controls keep their original markup and handlers. */
+	.home-hero { position: relative; display: grid; min-height: clamp(30rem, 48vw, 36rem); overflow: hidden; background: url('/rift-job-hero.png') 62% top / cover; color: #fff; }
+	.home-hero-shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgb(39 50 56 / 72%), rgb(39 50 56 / 18%), transparent); }
+	.home-hero-copy { position: relative; z-index: 1; display: grid; align-content: center; width: min(72.5rem, 100%); padding: 4.5rem 2rem; text-shadow: 0 2px 16px rgb(0 0 0 / 30%); animation: home-hero-enter 700ms cubic-bezier(.2,.75,.2,1) both; }
+	.home-hero-copy p { margin: 0 0 1.25rem; font-size: .78rem; font-weight: 900; letter-spacing: .18em; }
+	.home-hero-copy h1 { max-width: 43rem; margin: 0; color: #fff; font-size: clamp(3.2rem, 6vw, 5.8rem); font-weight: 900; letter-spacing: -.065em; line-height: .94; }
+	.home-hero-copy span { max-width: 34rem; margin-top: 1.35rem; font-size: 1.15rem; font-weight: 750; }
+	.home-hero-copy a { display: inline-flex; width: 19rem; justify-content: center; margin-top: 2rem; border-radius: .75rem; background: #273238; padding: 1rem 1.2rem; color: #fff; font-weight: 900; text-decoration: none; text-shadow: none; transition: background 160ms ease; }
+	.home-hero-copy a:hover { background: #d65391; }
+	@keyframes home-hero-enter { from { opacity: 0; transform: translateX(-2.5rem); } to { opacity: 1; transform: translateX(0); } }
+	@media (max-width: 700px) { .home-hero { min-height: 31rem; background-position: 61% top; } .home-hero-copy { padding: 3rem 1.25rem; } .home-hero-copy h1 { max-width: 19rem; font-size: clamp(3rem, 13vw, 4.25rem); } .home-hero-copy a { width: min(19rem, 100%); } }
+	@media (prefers-reduced-motion: reduce) { .home-hero-copy { animation: none; } }
 </style>

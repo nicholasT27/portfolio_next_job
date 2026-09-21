@@ -2,6 +2,233 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * Next Job visual foundations.
+ * These tokens are shared by the loader and the refreshed application pages so
+ * future page work can use the same palette instead of introducing one-off colours.
+ */
+:root {
+	--nj-ink: #273238;
+	--nj-paper: #ffffff;
+	--nj-rose: #d65391;
+	--nj-coral: #ff9c58;
+	--nj-sun: #f6cb67;
+	--nj-line: #ead8ca;
+	--nj-muted: #786a66;
+}
+
+body {
+	background: var(--nj-paper);
+	color: var(--nj-ink);
+	letter-spacing: 0.012em;
+}
+
+/* Smooth photo-based loading screen, adapted from the approved prototype. */
+.loader {
+	position: fixed;
+	inset: 0;
+	display: grid;
+	place-items: center;
+	overflow: hidden;
+	background: var(--nj-ink);
+	color: #fff;
+}
+
+.loader-scene {
+	position: absolute;
+	inset: -4%;
+	background-position: center;
+	background-size: cover;
+	opacity: 0;
+	animation: loader-crossfade 2.4s ease-in-out infinite;
+	will-change: opacity, transform;
+}
+
+.loader-scene-one {
+	background-image: linear-gradient(120deg, rgb(20 32 36 / 58%), rgb(90 38 59 / 28%)), url('/loader-scene-1.png');
+	animation-delay: 0s;
+}
+
+.loader-scene-two {
+	background-image: linear-gradient(120deg, rgb(75 35 49 / 42%), rgb(235 125 87 / 32%)), url('/loader-scene-2.png');
+	animation-delay: 0.8s;
+}
+
+.loader-scene-three {
+	background-image: linear-gradient(120deg, rgb(39 50 56 / 52%), rgb(246 184 102 / 32%)), url('/loader-scene-3.png');
+	animation-delay: 1.6s;
+}
+
+@keyframes loader-crossfade {
+	0%, 100% { opacity: 0; transform: scale(1); }
+	20%, 48% { opacity: 1; transform: scale(1.045); }
+	68% { opacity: 0; transform: scale(1.075); }
+}
+
+.loader-content {
+	position: relative;
+	z-index: 1;
+	width: min(22rem, calc(100vw - 3rem));
+	text-align: center;
+	text-shadow: 0 2px 18px rgb(0 0 0 / 45%);
+}
+
+.loader-mark {
+	display: grid;
+	width: 3.75rem;
+	height: 3.75rem;
+	margin: 0 auto 0.9rem;
+	place-items: center;
+	border-radius: 1.1rem;
+	background: var(--nj-sun);
+	color: var(--nj-ink);
+	font-size: 1.75rem;
+	font-weight: 900;
+	box-shadow: 0 12px 32px rgb(0 0 0 / 30%);
+	animation: loader-float 1.25s ease-in-out infinite alternate;
+}
+
+@keyframes loader-float {
+	to { transform: translateY(-0.45rem) rotate(3deg); }
+}
+
+.loader-brand {
+	margin: 0;
+	font-size: 1.35rem;
+	font-weight: 900;
+	letter-spacing: -0.035em;
+}
+
+.loader-track {
+	height: 0.3rem;
+	margin: 1rem auto 0.7rem;
+	overflow: hidden;
+	border-radius: 999px;
+	background: rgb(255 255 255 / 30%);
+}
+
+.loader-track span {
+	display: block;
+	height: 100%;
+	border-radius: inherit;
+	background: var(--nj-sun);
+	transition: width 80ms linear;
+}
+
+.loader-message {
+	margin: 0;
+	font-size: 0.875rem;
+	font-weight: 650;
+}
+
+/* Shared header mirrors the light, editorial navigation in the prototype. */
+.nj-header {
+	display: flex;
+	min-height: 4.5rem;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	padding: 0 5vw;
+	border-bottom: 1px solid var(--nj-line);
+	background: #fff;
+}
+
+.nj-brand {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	color: var(--nj-ink);
+	font-size: 1.2rem;
+	font-weight: 900;
+	letter-spacing: -0.03em;
+	text-decoration: none;
+}
+
+.nj-brand > span {
+	display: grid;
+	width: 2rem;
+	height: 2rem;
+	place-items: center;
+	border-radius: 0.65rem;
+	background: var(--nj-ink);
+	color: var(--nj-sun);
+	letter-spacing: 0;
+}
+
+.nj-nav,
+.nj-account {
+	display: flex;
+	align-items: center;
+	gap: 1.1rem;
+}
+
+.nj-nav { margin-left: auto; }
+.nj-account { margin-left: 0; }
+
+.nj-nav a,
+.nj-nav button,
+.nj-account-menu a,
+.nj-account-menu button {
+	border: 0;
+	background: transparent;
+	color: var(--nj-ink);
+	font: inherit;
+	font-weight: 750;
+	letter-spacing: 0.015em;
+	text-decoration: none;
+}
+
+.nj-nav-action {
+	padding: 0.7rem 1rem;
+	border-radius: 0.65rem !important;
+	background: var(--nj-ink) !important;
+	color: #fff !important;
+}
+
+.nj-avatar {
+	display: grid;
+	width: 2.4rem;
+	height: 2.4rem;
+	place-items: center;
+	overflow: hidden;
+	border: 1px solid var(--nj-line);
+	border-radius: 50%;
+	background: #fff7f2;
+	color: var(--nj-rose);
+	font-weight: 900;
+}
+
+.nj-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.nj-account { position: relative; }
+
+.nj-account-menu {
+	position: absolute;
+	z-index: 20;
+	top: calc(100% + 0.65rem);
+	right: 0;
+	display: grid;
+	min-width: 12rem;
+	gap: 0.15rem;
+	padding: 0.75rem;
+	border: 1px solid var(--nj-line);
+	border-radius: 0.8rem;
+	background: #fff;
+	box-shadow: 0 1rem 2.5rem rgb(39 50 56 / 14%);
+}
+
+.nj-account-menu a,
+.nj-account-menu button { padding: 0.55rem; text-align: left; border-radius: 0.4rem; }
+.nj-account-menu a:hover,
+.nj-account-menu button:hover { background: #fff1e9; }
+.nj-account-name { margin: 0.1rem 0 0.4rem; padding: 0 0.55rem; color: var(--nj-muted); font-size: 0.8rem; }
+
+@media (max-width: 680px) {
+	.nj-header { min-height: 4rem; padding: 0 1rem; }
+	.nj-nav { gap: 0.7rem; }
+	.nj-nav a:not(.nj-nav-action) { display: none; }
+	.nj-nav-action { padding: 0.55rem 0.7rem; font-size: 0.85rem; }
+}
+
 @keyframes slide-to-right {
 	0% {
 		opacity: 0;
