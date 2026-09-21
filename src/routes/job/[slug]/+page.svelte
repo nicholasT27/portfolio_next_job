@@ -217,30 +217,15 @@ async function deleteRecord(id){
  
     <div class="job-detail-layout">
         <article class="job-detail-content">
-          <div class="slide-up">
-			<h2 class="text-xl font-semibold mb-2 text-black">About the role</h2>
-            <p class="border border-pink-600 mb-4"></p>
-            <div class="border rounded-lg p-4 bg-white border-slate-400 shadow-xl"> 
-              <span class="text-xl md:text-lg"><SvelteMarkdown source={data.jobs.description}/></span>
-            </div>
-          </div>
+          <h2>About the role</h2>
+          <div class="job-detail-prose"><SvelteMarkdown source={data.jobs.description}/></div>
 
-            <div class="mt-6" />
-          <div id="slideUpDiv" class="slide-up">
-            <h2 class="text-xl font-semibold text-black mb-2">Requirements</h2>
-            <p class="border border-pink-600 mb-4"></p>
-            <div class="border rounded-lg p-4 bg-white border-slate-400 shadow-xl">
-              <span class="text-xl md:text-lg"><SvelteMarkdown source={data.jobs.requirements} /></span>
-            </div>
-          </div>
+          <h3>What you’ll do</h3>
+          <div class="job-detail-prose"><SvelteMarkdown source={data.jobs.requirements}/></div>
 
-            <div class="mt-6" />
-		  <div id="how-to-apply" class="slide-up2">
-            <h2 class="text-xl font-semibold text-black mb-2">How to Apply?</h2>
-            <p class="border border-pink-600 mb-4"></p>
-            <div class="border rounded-lg p-4 bg-white border-slate-400 shadow-xl">
-              <p class="text-xl md:text-lg break-all">{data.jobs.applicationInstructions}</p>
-            </div>
+          <div id="how-to-apply">
+            <h3>What you’ll bring</h3>
+            <p class="job-detail-prose break-all">{data.jobs.applicationInstructions}</p>
           </div>
         </article>
 
@@ -248,41 +233,10 @@ async function deleteRecord(id){
 		  <button type="button" class="job-detail-apply" on:click={scrollToApplication}>Apply now ↗</button>
 		  <button type="button" class="job-detail-share" on:click={shareJob}>↗ Share</button>
 		  <h2 class="job-detail-glance">At a glance</h2>
-          <div class="slide-up2">
-            <h2 class="text-xl font-semibold mb-2">Location</h2>
-            <p class="border md:border-orange-400 border-pink-600 mb-4"></p>
-            <p class="border rounded-lg p-4 bg-white border-slate-400 shadow-xl text-xl md:text-lg">{data.jobs.location}</p>
-          </div>
-
-            <div class="mt-6" />
-
-          <div class="slide-up3">
-            <h2 class="text-xl font-semibold mb-2">Salary Range</h2>
-            <p class="border md:border-orange-400 border-pink-600 mb-4"></p>
-            <p class="border rounded-lg p-4 bg-white border-slate-400 shadow-xl text-xl md:text-lg">
-                USD {humanize.formatNumber(data.jobs.minAnnualCompensation)} - USD {humanize.formatNumber(
-                    data.jobs.maxAnnualCompensation
-                )}
-            </p>
-          </div>
-
-          <div class="mt-6 "/>
-
-          <div class="slide-up4">
-          <h2 class="text-xl font-semibold mb-2">Job Type</h2>
-          <p class="border md:border-orange-400 border-pink-600 mb-4"></p>
-          <div class="flex flex-row text-white text-lg">
-            {#if data.jobs.job_type.includes('Full Time')}
-            <h2 class="rounded-lg p-2 job-type ml-2">Full Time</h2>
-            {/if}
-            {#if data.jobs.job_type.includes('Part Time') }
-            <h2 class="rounded-lg p-2 job-type ml-2">Part Time</h2>
-            {/if}
-            {#if data.jobs.job_type.includes('Remote')}
-            <h2 class="rounded-lg p-2 job-type ml-2 flex items-center">Remote</h2>
-            {/if}
-          </div>
-          </div>
+          <div class="job-detail-fact"><b>Location</b><span>{data.jobs.location}</span></div>
+          <div class="job-detail-fact"><b>Workplace</b><span>{data.jobs.job_type.includes('Remote') ? 'Remote' : 'On-site'}</span></div>
+          <div class="job-detail-fact"><b>Salary range</b><span>USD {humanize.formatNumber(data.jobs.minAnnualCompensation)} – USD {humanize.formatNumber(data.jobs.maxAnnualCompensation)}</span></div>
+          <div class="job-detail-fact"><b>Employment type</b><span>{data.jobs.job_type.filter((type) => type !== 'Remote').join(', ')}</span></div>
         </aside>
     </div>
 
