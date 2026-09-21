@@ -32,15 +32,6 @@ onMount(async () => {
   document.getElementById('how-to-apply')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
  }
 
- async function shareJob() {
-  const shareData = { title: data.jobs.title, text: `${data.jobs.title} at ${data.jobs.employer}`, url: window.location.href };
-  try {
-    if (navigator.share) await navigator.share(shareData);
-    else await navigator.clipboard.writeText(window.location.href);
-  } catch (error) {
-    // Dismissing the native sharing sheet is not an application error.
-  }
- }
 
 onMount(() => {
     const handleScroll = () => {
@@ -231,7 +222,6 @@ async function deleteRecord(id){
 
         <aside class="job-detail-sidebar">
 		  <button type="button" class="job-detail-apply" on:click={scrollToApplication}>Apply now ↗</button>
-		  <button type="button" class="job-detail-share" on:click={shareJob}>↗ Share</button>
 		  <h2 class="job-detail-glance">At a glance</h2>
           <div class="job-detail-fact"><b>Location</b><span>{data.jobs.location}</span></div>
           <div class="job-detail-fact"><b>Workplace</b><span>{data.jobs.job_type.includes('Remote') ? 'Remote' : 'On-site'}</span></div>
