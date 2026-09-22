@@ -13,7 +13,7 @@
 .flip-card-back input:focus { border-color: #d65391 !important; box-shadow: 0 0 0 3px rgb(214 83 145 / 14%) !important; }
 
 /* Shared glass-form composition; all existing profile update controls remain in place. */
-@media (min-width: 768px) {
+@media (min-width: 769px) {
     .form-page-shell { position: relative; min-height: 100svh; overflow: hidden; background: #273238; isolation: isolate; }
     .form-page-shell > #flip-card { position: absolute; inset: 0; z-index: 0; width: 100% !important; height: 100%; }
     .form-page-shell #flip-card-inner, .form-page-shell .flip-card-front { width: 100%; height: 100%; }
@@ -34,6 +34,22 @@
 @media (max-width: 768px) {
     .form-page-shell { min-height: 100svh; height: auto; overflow: auto; background: #f8f5f1; }
     #flip-card { display: none !important; }
-    .form-page-shell > .formDivision { display: flex !important; position: relative !important; z-index: 1; top: auto !important; right: auto !important; width: 100% !important; min-height: 100svh; height: auto !important; max-height: none !important; margin: 0 !important; padding: 2rem 1.25rem !important; transform: none !important; overflow: visible; border: 0 !important; border-radius: 0 !important; background: #f8f5f1 !important; box-shadow: none !important; backdrop-filter: none !important; animation: none !important; }
+    .form-page-shell > .formDivision { display: flex !important; position: relative !important; z-index: 1; top: auto !important; right: auto !important; width: 100% !important; min-height: 100svh; height: auto !important; max-height: none !important; margin: 0 !important; padding: 2rem 1.25rem !important; transform: none !important; align-items: flex-start !important; justify-content: center !important; overflow: visible; border: 0 !important; border-radius: 0 !important; background: #f8f5f1 !important; box-shadow: none !important; backdrop-filter: none !important; animation: none !important; }
     .formDivision > div { width: min(100%, 30rem) !important; margin: auto; }
+
+    /* Profile controls are arranged as vertical fields on narrow screens. */
+    .form-page-shell > .formDivision > .mt-20 { width: 100% !important; margin-top: 4rem !important; }
+    .form-page-shell > .formDivision .mt-5 { width: 100% !important; }
+    .form-page-shell > .formDivision .mt-5 > form,
+    .form-page-shell > .formDivision .mt-5 > p { width: 100% !important; margin: 0 0 1rem !important; padding: 0 !important; }
+    .form-page-shell > .formDivision .mt-5 > form { display: flex !important; align-items: flex-end !important; gap: .5rem; }
+    .form-page-shell > .formDivision .mt-5 > form > p { flex: 1; }
+    .form-page-shell > .formDivision .mt-5 > form > p,
+    .form-page-shell > .formDivision .mt-5 > p { display: flex !important; flex-direction: column !important; gap: .4rem !important; }
+    .form-page-shell > .formDivision .mt-5 svg { display: none !important; }
+    .form-page-shell > .formDivision .mt-5 .userData,
+    .form-page-shell > .formDivision .mt-5 input { width: 100% !important; }
+    .form-page-shell > .formDivision .mt-5 .userData { padding: .6rem .8rem !important; text-align: left !important; }
+    .form-page-shell > .formDivision .mt-5 input { min-height: 2.9rem; padding: .6rem .8rem !important; text-align: left !important; }
+    .form-page-shell > .formDivision .mt-5 > form > button { flex: 0 0 2.75rem; width: 2.75rem !important; height: 2.75rem !important; margin: 0 0 .05rem !important; }
 }

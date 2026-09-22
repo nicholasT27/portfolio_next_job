@@ -351,8 +351,30 @@ body {
 
 
 /* Flip card back side viewport css code */
+.form-home-nav {
+	display: none;
+}
+
 @media (min-width: 280px) and (max-width: 768px) {
-    .formDivision {
+	/* Mobile form pages show their real form directly; retain a simple way home. */
+	.form-home-nav {
+		display: inline-flex;
+		position: fixed;
+		top: 1rem;
+		left: 1rem;
+		z-index: 50;
+		align-items: center;
+		min-height: 2.5rem;
+		padding: .5rem .9rem;
+		border: 1px solid #e2d4c9;
+		border-radius: 999px;
+		background: rgb(255 255 255 / 94%);
+		color: #273238;
+		font-weight: 750;
+		box-shadow: 0 .45rem 1.25rem rgb(39 50 56 / 12%);
+	}
+
+	.formDivision {
         display: none;
     }
 }

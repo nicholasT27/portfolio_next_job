@@ -48,6 +48,7 @@
 </svelte:head>
 
 <div class="form-page-shell flex h-screen w-screen">
+	<a class="form-home-nav" href="/Home">← Home</a>
 	<div id="flip-card" class="sm:w-6/12 w-full h-full">
 		<div id="flip-card-inner" class="flip-card-inner">
 			<div class="flip-card-front w-full h-full">

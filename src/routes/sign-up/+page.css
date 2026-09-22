@@ -1,5 +1,8 @@
 .createUserWindow {
-    height: 550px;
+    /* The sign-up form must grow with its fields; a fixed window caused a nested scrollbar. */
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
 }
 
 /* Visual-only account-page palette; original inputs, upload control and create request are unchanged. */
@@ -29,6 +32,12 @@
     .form-page-shell { min-height: 100svh; height: auto; overflow: auto; background: #f8f5f1; }
     #flip-card { display: none !important; }
     .form-page-shell > .formDivision { display: flex !important; position: relative !important; z-index: 1; top: auto !important; right: auto !important; width: 100% !important; min-height: 100svh; height: auto !important; max-height: none !important; margin: 0 !important; padding: 2rem 1.25rem !important; transform: none !important; overflow: visible; border: 0 !important; border-radius: 0 !important; background: #f8f5f1 !important; box-shadow: none !important; backdrop-filter: none !important; animation: none !important; }
+
+    /* Restore contrast for the sign-in prompt on the light mobile form surface. */
+    .form-page-shell > .formDivision .text-gray-500 { color: #52606a !important; }
+    .form-page-shell > .formDivision .text-gray-500 a { color: #c94a75 !important; }
+    /* Let the account form grow with its fields instead of creating an inner scrollbar. */
+    .form-page-shell > .formDivision .createUserWindow { height: auto !important; max-height: none !important; overflow: visible !important; }
     .formDivision > div { width: min(100%, 30rem) !important; margin: auto; }
 }
 
@@ -41,23 +50,32 @@
 }
 
 /* Full-screen presentation inspired by the approved reference; account creation, validation and upload remain unchanged. */
-@media (min-width: 768px) {
+@media (min-width: 769px) {
     .form-page-shell { position: relative; min-height: 100svh; overflow: hidden; background: #273238; isolation: isolate; }
     .form-page-shell > #flip-card { position: absolute; inset: 0; z-index: 0; width: 100% !important; height: 100%; }
     .form-page-shell #flip-card-inner, .form-page-shell .flip-card-front { width: 100%; height: 100%; }
+    /* Desktop uses the direct form panel; never reveal the legacy duplicate back face. */
+    .form-page-shell #flip-card-inner { box-shadow: none !important; }
+    .form-page-shell .flip-card-back { display: none !important; }
     .form-page-shell .flip-card-front img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
     .form-page-shell .flip-card-front::after { background: linear-gradient(90deg, rgb(28 35 48 / 80%) 0%, rgb(42 41 58 / 48%) 48%, rgb(205 105 119 / 22%) 100%) !important; }
     .form-page-shell .flip-card-front > .absolute { top: 50% !important; left: clamp(3rem, 8vw, 9rem) !important; margin: 0 !important; transform: translateY(-50%); max-width: 32rem; }
     .form-page-shell .flip-card-front h1 { font-size: clamp(4rem, 6.2vw, 6.8rem) !important; letter-spacing: -.07em; }
     .form-page-shell .form-page-intro { margin: 1.35rem 0 0; color: rgb(255 255 255 / 88%); font-size: clamp(1.4rem, 2.1vw, 2.2rem); font-weight: 450; line-height: 1.28; letter-spacing: -.025em; }
     .form-page-shell .form-page-note { margin-top: 1.4rem; color: rgb(255 255 255 / 76%); font-size: 1rem; font-weight: 500; }
-    .form-page-shell > .formDivision { position: absolute !important; z-index: 2; top: 50%; right: clamp(2.5rem, 7vw, 9rem); width: min(31rem, 43vw) !important; height: auto !important; max-height: calc(100svh - 6rem); margin: 0 !important; padding: clamp(1.25rem, 2.2vw, 2rem) !important; transform: translateY(-50%); overflow-x: hidden; overflow-y: auto; border: 1px solid rgb(255 255 255 / 52%); border-radius: 1.5rem; background: rgb(255 255 255 / 22%) !important; box-shadow: 0 2rem 5rem rgb(10 18 27 / 24%); backdrop-filter: blur(22px); animation: account-panel-in .55s cubic-bezier(.22, 1, .36, 1) both; }
+    /* Single stable glass panel for the preferred desktop sign-up layout. */
+    .form-page-shell > .formDivision { position: absolute !important; z-index: 2; top: 50%; right: clamp(2.5rem, 7vw, 9rem); width: min(31rem, 43vw) !important; height: auto !important; max-height: calc(100svh - 6rem); margin: 0 !important; padding: clamp(1.25rem, 2.2vw, 2rem) !important; transform: translateY(-50%); overflow-x: hidden; overflow-y: auto; border: 1px solid rgb(255 255 255 / 76%); border-radius: 1.5rem; background: rgb(255 255 255 / 42%) !important; box-shadow: 0 2rem 5rem rgb(10 18 27 / 20%); backdrop-filter: blur(22px); animation: account-panel-in .55s cubic-bezier(.22, 1, .36, 1) both; }
     .form-page-shell > .formDivision > div, .form-page-shell > .formDivision .slide-down { width: 100% !important; }
     .form-page-shell > .formDivision > div > div, .form-page-shell > .formDivision .slide-down > form { width: 100% !important; }
+    /* Clear legacy gradient and card styles on both outer wrappers. */
+    .form-page-shell > .formDivision > .slide-down { background: transparent !important; border: 0 !important; box-shadow: none !important; }
+    /* The inner account card is also glass; fields remain solid white for legibility. */
+    .form-page-shell > .formDivision .createUserWindow { background: transparent !important; }
     .form-page-shell .flip-card-back-form { border: 0 !important; border-radius: 0 !important; background: transparent !important; box-shadow: none !important; }
     .form-page-shell .flip-card-back-form button[type='submit'] { background: #ef3f82 !important; }
 }
 
+.form-page-shell .flip-card-back { display: none !important; }
 .form-page-shell .flip-card-front .slideRight { animation: account-hero-in .6s cubic-bezier(.22, 1, .36, 1) both; }
 .form-page-shell .formDivision .slide-down { animation: none; }
 @keyframes account-hero-in { from { opacity: 0; transform: translate(-2.5rem, -50%); } to { opacity: 1; transform: translate(0, -50%); } }

@@ -50,8 +50,8 @@
 			interval: null,
 
 			indicators: {
-				activeClasses: 'bg-white',
-				inactiveClasses: 'bg-white/50',
+				activeClasses: 'is-active',
+				inactiveClasses: 'is-inactive',
 				items: [
 					{
 						position: 0,
@@ -118,8 +118,8 @@
 			interval: null,
 
 			indicators: {
-				activeClasses: 'bg-white',
-				inactiveClasses: 'bg-white/50',
+				activeClasses: 'is-active',
+				inactiveClasses: 'is-inactive',
 				items: [
 					{
 						position: 0,
@@ -273,6 +273,7 @@
 </svelte:head>
 
 <div class="form-page-shell flex h-screen w-screen">
+	<a class="form-home-nav" href="/Home">← Home</a>
 	<!-- Flip Card Division -->
 	<div id="flip-card" class="sm:w-6/12 w-full h-full">
 		<div id="flip-card-inner" class="flip-card-inner">
@@ -1648,5 +1649,32 @@
 		:global(.form-page-shell #flip-card) { display: none !important; }
 		:global(.form-page-shell > .formDivision) { display: flex !important; position: relative !important; z-index: 1; top: auto !important; right: auto !important; width: 100% !important; min-height: 100svh; height: auto !important; max-height: none !important; margin: 0 !important; padding: 2rem 1.25rem !important; transform: none !important; overflow: visible; border: 0 !important; border-radius: 0 !important; background: #f8f5f1 !important; box-shadow: none !important; backdrop-filter: none !important; animation: none !important; }
 		:global(.form-page-shell > .formDivision > div) { width: min(100%, 32rem) !important; height: auto !important; margin: auto; }
+	}
+
+	/* Compact job forms use a solid, high-contrast surface on tablets and phones. */
+	@media (max-width: 1024px) {
+		:global(.form-page-shell) { min-height: 100svh; height: auto; overflow: auto; background: #fff; }
+		:global(.form-page-shell #flip-card) { display: none !important; }
+		:global(.form-page-shell > .formDivision) { display: flex !important; position: relative !important; z-index: 1; top: auto !important; right: auto !important; width: 100% !important; min-height: 100svh; height: auto !important; max-height: none !important; margin: 0 !important; padding: 5rem 1.25rem 2.5rem !important; transform: none !important; overflow: visible; border: 0 !important; border-radius: 0 !important; background: #fff !important; box-shadow: none !important; backdrop-filter: none !important; animation: none !important; }
+		:global(.form-page-shell > .formDivision > div) { width: min(100%, 42rem) !important; height: auto !important; margin: 0 auto !important; }
+		:global(.form-page-shell .carousel-item), :global(.form-page-shell .carousel-item h2), :global(.form-page-shell .carousel-item h3), :global(.form-page-shell .carousel-item label), :global(.form-page-shell .carousel-item p), :global(.form-page-shell .carousel-item li), :global(.form-page-shell .carousel-item span), :global(.form-page-shell .form-public-note) { color: #273238 !important; text-shadow: none !important; }
+		:global(.form-page-shell .carousel-item input), :global(.form-page-shell .carousel-item textarea) { background: #fff !important; color: #273238 !important; border-color: #d8c6b9 !important; }
+		:global(.form-page-shell input[type='checkbox']) { border-color: #273238 !important; background: #fff !important; }
+		:global(.form-page-shell #indicators-carousel > .relative.h-56) { height: 42rem !important; overflow: hidden !important; }
+		:global(.form-page-shell .carousel-item > div) { top: 0 !important; height: calc(100% - 5rem) !important; min-height: 34rem; padding: 1.5rem !important; transform: translateX(-50%) !important; }
+		:global(.form-page-shell .carousel-item > div > div) { height: 100% !important; min-height: 0 !important; padding-bottom: 1rem; }
+		:global(.form-page-shell #indicators-carousel > .absolute.z-30) { bottom: 1.25rem !important; z-index: 40 !important; transform: translateX(-50%) !important; }
+		:global(.form-page-shell #indicators-carousel > .absolute.z-30 button) { display: block !important; width: .7rem !important; height: .7rem !important; background: #b5a69b !important; opacity: 1 !important; }
+		:global(.form-page-shell #indicators-carousel > .absolute.z-30 button.is-active) { background: #ef3f82 !important; transform: scale(1.25); }
+		:global(.form-page-shell button[type='submit']) { background: #ef3f82 !important; color: #fff !important; }
+	}
+
+	/* Design 2 desktop form: one rounded white-glass surface without nested cards. */
+	@media (min-width: 1025px) {
+		:global(.form-page-shell .flip-card-back), :global(.form-page-shell #flip-card-inner) { box-shadow: none !important; }
+		:global(.form-page-shell .flip-card-back) { display: none !important; }
+		:global(.form-page-shell > .formDivision) { border: 1px solid rgb(255 255 255 / 76%) !important; border-radius: 1.5rem !important; background: rgb(255 255 255 / 42%) !important; box-shadow: 0 2rem 5rem rgb(10 18 27 / 20%) !important; backdrop-filter: blur(22px); }
+		:global(.form-page-shell .carousel-item > div) { border: 0 !important; border-radius: 0 !important; background: transparent !important; box-shadow: none !important; }
+		:global(.form-page-shell .carousel-item), :global(.form-page-shell .carousel-item h2), :global(.form-page-shell .carousel-item h3), :global(.form-page-shell .carousel-item label), :global(.form-page-shell .carousel-item p), :global(.form-page-shell .carousel-item li), :global(.form-page-shell .carousel-item span), :global(.form-page-shell .form-public-note) { color: #273238 !important; text-shadow: none !important; }
 	}
 </style>

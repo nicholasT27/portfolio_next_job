@@ -38,7 +38,7 @@
     <div class="absolute right-5 top-[4.3rem] w-60 overflow-hidden rounded-2xl border border-[#ead8ca] bg-white p-2 shadow-xl sm:right-8 lg:right-12">
       {#if $isAuthenticated}
         <div class="border-b border-[#ead8ca] px-3 py-3 text-sm"><div class="font-bold">{authData?.userName}</div><div class="mt-1 truncate text-[#786a66]">{authData?.userEmail}</div></div>
-        <a href="/profile" class="mt-1 block rounded-xl px-3 py-2.5 text-sm font-bold hover:bg-[#f8eee7]">Profile</a><a href="/job-posted" class="block rounded-xl px-3 py-2.5 text-sm font-bold hover:bg-[#f8eee7]">My jobs</a><button on:click={logOut} class="block w-full rounded-xl px-3 py-2.5 text-left text-sm font-bold hover:bg-[#f8eee7]">Log out</button>
+        <a href="/profile" class="mt-1 block rounded-xl px-3 py-2.5 text-sm font-bold hover:bg-[#f8eee7]">Profile</a><a href="/job-posted" class="block rounded-xl px-3 py-2.5 text-sm font-bold hover:bg-[#f8eee7]">My jobs</a><a href="/job/new" class="block rounded-xl px-3 py-2.5 text-sm font-bold hover:bg-[#f8eee7]">Post a job</a><button on:click={logOut} class="block w-full rounded-xl px-3 py-2.5 text-left text-sm font-bold hover:bg-[#f8eee7]">Log out</button>
       {:else}
         <a href="/Home#open-roles" class="block rounded-xl px-3 py-2.5 text-sm font-bold hover:bg-[#f8eee7]">Explore jobs</a><a href="/login" class="block rounded-xl px-3 py-2.5 text-sm font-bold hover:bg-[#f8eee7]">Log in</a><button on:click={signUp} class="block w-full rounded-xl px-3 py-2.5 text-left text-sm font-bold hover:bg-[#f8eee7]">Join free</button>
       {/if}

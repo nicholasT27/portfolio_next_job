@@ -22,7 +22,6 @@
 	z-index: 1;
 }
 
-.flip-card-back > div > div,
 .formDivision > div > div {
 	border: 1px solid #eadfd6 !important;
 	border-radius: 1.25rem !important;
@@ -63,7 +62,6 @@
 .flip-card-back button[type='submit']:hover,
 .formDivision button[type='submit']:hover {
 	background: #d65391 !important;
-	transform: translateY(-2px);
 }
 
 .flip-card-back a,
@@ -111,7 +109,7 @@
 .formDivision { width: 58% !important; padding: clamp(1.5rem, 4vw, 4.5rem) !important; }
 .formDivision > div { width: min(100%, 31rem); }
 
-@media (min-width: 768px) {
+@media (min-width: 769px) {
 	.formDivision {
 		border-left: 1px solid #e8e0d7;
 	}
@@ -121,6 +119,9 @@
 	.form-page-shell { min-height: 100svh; height: auto; overflow: auto; background: #f8f5f1; }
 	#flip-card { display: none !important; }
 	.form-page-shell > .formDivision { display: flex !important; position: relative !important; z-index: 1; top: auto !important; right: auto !important; width: 100% !important; min-height: 100svh; height: auto !important; max-height: none !important; margin: 0 !important; padding: 2rem 1.25rem !important; transform: none !important; overflow: visible; border: 0 !important; border-radius: 0 !important; background: #f8f5f1 !important; box-shadow: none !important; backdrop-filter: none !important; animation: none !important; }
+	/* The mobile form uses a light surface, so the account switch needs dark text. */
+	.form-page-shell > .formDivision .text-gray-500 { color: #52606a !important; }
+	.form-page-shell > .formDivision .text-gray-500 a { color: #c94a75 !important; }
 	.formDivision > div { width: min(100%, 28rem) !important; margin: auto; }
 
 	.flip-card-back > div > div {
@@ -130,17 +131,20 @@
 }
 
 /* Full-screen presentation inspired by the approved reference: the original login form remains untouched. */
-@media (min-width: 768px) {
+@media (min-width: 769px) {
 	.form-page-shell { position: relative; min-height: 100svh; overflow: hidden; background: #273238; isolation: isolate; }
 	.form-page-shell > #flip-card { position: absolute; inset: 0; z-index: 0; width: 100% !important; height: 100%; }
 	.form-page-shell #flip-card-inner, .form-page-shell .flip-card-front { width: 100%; height: 100%; }
+	.form-page-shell #flip-card-inner { box-shadow: none !important; }
+	.form-page-shell .flip-card-back { display: none !important; }
 	.form-page-shell .flip-card-front img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 	.form-page-shell .flip-card-front::after { background: linear-gradient(90deg, rgb(28 35 48 / 80%) 0%, rgb(42 41 58 / 48%) 48%, rgb(205 105 119 / 22%) 100%) !important; }
 	.form-page-shell .flip-card-front > .absolute { top: 50% !important; left: clamp(3rem, 8vw, 9rem) !important; margin: 0 !important; transform: translateY(-50%); max-width: 32rem; }
 	.form-page-shell .flip-card-front h1 { font-size: clamp(4rem, 6.2vw, 6.8rem) !important; letter-spacing: -.07em; }
 	.form-page-shell .form-page-intro { margin: 1.35rem 0 0; color: rgb(255 255 255 / 88%); font-size: clamp(1.4rem, 2.1vw, 2.2rem); font-weight: 450; line-height: 1.28; letter-spacing: -.025em; }
 	.form-page-shell .form-page-note { margin-top: 1.4rem; color: rgb(255 255 255 / 76%); font-size: 1rem; font-weight: 500; }
-	.form-page-shell > .formDivision { position: absolute !important; z-index: 2; top: 50%; right: clamp(2.5rem, 7vw, 9rem); width: min(31rem, 43vw) !important; height: auto !important; max-height: calc(100svh - 6rem); margin: 0 !important; padding: clamp(1.25rem, 2.2vw, 2rem) !important; transform: translateY(-50%); overflow-x: hidden; overflow-y: auto; border: 1px solid rgb(255 255 255 / 52%); border-radius: 1.5rem; background: rgb(255 255 255 / 22%) !important; box-shadow: 0 2rem 5rem rgb(10 18 27 / 24%); backdrop-filter: blur(22px); animation: login-panel-in .55s cubic-bezier(.22, 1, .36, 1) both; }
+	/* Design 2: one rounded white-glass panel, with no nested card. */
+	.form-page-shell > .formDivision { position: absolute !important; z-index: 2; top: 50%; right: clamp(2.5rem, 7vw, 9rem); width: min(31rem, 43vw) !important; height: auto !important; max-height: calc(100svh - 6rem); margin: 0 !important; padding: clamp(1.25rem, 2.2vw, 2rem) !important; transform: translateY(-50%); overflow-x: hidden; overflow-y: auto; border: 1px solid rgb(255 255 255 / 76%); border-radius: 1.5rem; background: rgb(255 255 255 / 42%) !important; box-shadow: 0 2rem 5rem rgb(10 18 27 / 20%); backdrop-filter: blur(22px); animation: login-panel-in .55s cubic-bezier(.22, 1, .36, 1) both; }
 	.form-page-shell > .formDivision > div, .form-page-shell > .formDivision .slide-down { width: 100% !important; height: auto !important; }
 	.form-page-shell > .formDivision > div > div, .form-page-shell > .formDivision .slide-down > form { width: 100% !important; }
 	.form-page-shell .flip-card-back > div > div, .form-page-shell .formDivision > div > div { border: 0 !important; border-radius: 0 !important; background: transparent !important; box-shadow: none !important; }

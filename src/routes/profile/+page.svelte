@@ -158,6 +158,7 @@
 </svelte:head>
 
 <div class="form-page-shell flex h-screen w-screen">
+	<a class="form-home-nav" href="/Home">← Home</a>
 	<!-- Profile Flip Card Division -->
 
 	<!-- Image div -->
