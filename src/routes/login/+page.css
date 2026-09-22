@@ -56,7 +56,11 @@
 	border-radius: .75rem !important;
 	background: #273238 !important;
 	font-weight: 750 !important;
-	transition: transform .2s ease, background .2s ease;
+	transition: background-color .2s ease;
+	/* Promote to its own compositor layer so a hover color-change doesn't
+	   force the backdrop-filter: blur() panel behind it to repaint. */
+	will-change: background-color;
+	transform: translateZ(0);
 }
 
 .flip-card-back button[type='submit']:hover,
@@ -161,4 +165,46 @@
 		opacity: 1;
 		transform: translate(0, -50%);
 	}
+}
+
+/* Match the current sign-up page on desktop: image story on the left, one calm form surface on the right. */
+@media (min-width: 1025px) {
+	.form-page-shell > #flip-card {
+		inset: 0 auto 0 0;
+		width: 52.5% !important;
+	}
+
+	.form-page-shell .flip-card-back { display: none !important; }
+	.form-page-shell > .formDivision {
+		top: 0 !important;
+		right: 0 !important;
+		width: 47.5% !important;
+		height: 100svh !important;
+		max-height: 100svh !important;
+		padding: clamp(2rem, 4vw, 4rem) !important;
+		transform: none !important;
+		border: 0 !important;
+		border-radius: 0 !important;
+		background: #f8eee7 !important;
+		box-shadow: none !important;
+		backdrop-filter: none !important;
+		align-items: center !important;
+		justify-content: center !important;
+	}
+
+	.form-page-shell > .formDivision > div { width: min(100%, 32rem) !important; }
+
+	/* Sign-up typography and controls. */
+	.form-page-shell > .formDivision,
+	.form-page-shell > .formDivision form { color: #273238 !important; }
+	.form-page-shell > .formDivision .slide-down form > div:first-child { align-items: flex-start !important; gap: .75rem !important; }
+	.form-page-shell > .formDivision .slide-down form > div:first-child svg { flex: 0 0 auto !important; }
+	.form-page-shell > .formDivision h5 { flex: 1 1 auto !important; min-width: 0 !important; font-size: clamp(2rem, 3.1vw, 3rem) !important; font-weight: 900 !important; line-height: .92 !important; letter-spacing: -.055em !important; color: #273238 !important; }
+	.form-page-shell > .formDivision label { font-size: .875rem !important; font-weight: 900 !important; color: #273238 !important; }
+	.form-page-shell > .formDivision input { min-height: 3.25rem !important; border: 1px solid #d8c6b9 !important; border-radius: .75rem !important; background: #fff !important; color: #273238 !important; font-size: 1rem !important; }
+	.form-page-shell > .formDivision input::placeholder { color: #a69791 !important; }
+	.form-page-shell > .formDivision button[type='submit'] { min-height: 3.5rem !important; border-radius: .75rem !important; background: #273238 !important; color: #fff !important; font-size: 1rem !important; font-weight: 900 !important; }
+	.form-page-shell > .formDivision button[type='submit']:hover { background: #d65391 !important; }
+	.form-page-shell > .formDivision form > div:last-child { color: #786a66 !important; font-size: .875rem !important; }
+	.form-page-shell > .formDivision form > div:last-child a { color: #273238 !important; font-weight: 900 !important; text-decoration: underline; text-decoration-color: #d65391; text-decoration-thickness: 2px; text-underline-offset: 4px; }
 }

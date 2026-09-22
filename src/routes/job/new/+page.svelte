@@ -1640,4 +1640,31 @@
 		:global(.form-page-shell .carousel-item > div) { border: 0 !important; border-radius: 0 !important; background: transparent !important; box-shadow: none !important; }
 		:global(.form-page-shell .carousel-item), :global(.form-page-shell .carousel-item h2), :global(.form-page-shell .carousel-item h3), :global(.form-page-shell .carousel-item label), :global(.form-page-shell .carousel-item p), :global(.form-page-shell .carousel-item li), :global(.form-page-shell .carousel-item span), :global(.form-page-shell .form-public-note) { color: #273238 !important; text-shadow: none !important; }
 	}
+
+	/* Use the same split desktop shell as the current sign-up page; carousel logic is unchanged. */
+	@media (min-width: 1025px) {
+		:global(.form-page-shell > #flip-card) { inset: 0 auto 0 0; width: 52.5% !important; }
+		:global(.form-page-shell .flip-card-back) { display: none !important; }
+		:global(.form-page-shell > .formDivision) { top: 0 !important; right: 0 !important; width: 47.5% !important; height: 100svh !important; max-height: 100svh !important; padding: clamp(2rem, 4vw, 4rem) !important; transform: none !important; border: 0 !important; border-radius: 0 !important; background: #f8eee7 !important; box-shadow: none !important; backdrop-filter: none !important; align-items: center !important; justify-content: center !important; }
+		:global(.form-page-shell > .formDivision > div), :global(.form-page-shell > .formDivision > form) { width: min(100%, 42rem) !important; }
+		/* The sign-up page's type scale, palette and control treatment. */
+		:global(.form-page-shell .carousel-item), :global(.form-page-shell .carousel-item h2), :global(.form-page-shell .carousel-item h3), :global(.form-page-shell .carousel-item label), :global(.form-page-shell .carousel-item p), :global(.form-page-shell .carousel-item li), :global(.form-page-shell .carousel-item span), :global(.form-page-shell .form-public-note) { color: #273238 !important; text-shadow: none !important; }
+		:global(.form-page-shell .carousel-item h2) { font-size: clamp(1.875rem, 3vw, 3rem) !important; font-weight: 900 !important; letter-spacing: -.055em !important; }
+		:global(.form-page-shell .carousel-item h3) { font-size: 1rem !important; font-weight: 900 !important; letter-spacing: 0 !important; }
+		:global(.form-page-shell .carousel-item label) { font-size: .875rem !important; font-weight: 900 !important; letter-spacing: 0 !important; }
+		:global(.form-page-shell .carousel-item input), :global(.form-page-shell .carousel-item textarea) { border: 1px solid #d8c6b9 !important; border-radius: .75rem !important; background: #fff !important; color: #273238 !important; font-size: 1rem !important; }
+		:global(.form-page-shell .carousel-item input::placeholder), :global(.form-page-shell .carousel-item textarea::placeholder) { color: #a69791 !important; }
+		:global(.form-page-shell input[type='checkbox']) { border-color: #273238 !important; background: #fff !important; }
+		:global(.form-page-shell input[type='checkbox']:checked) { border-color: #d65391 !important; background: #d65391 !important; box-shadow: inset 0 0 0 4px #fff !important; }
+		:global(.form-page-shell button[type='submit']) { background: #273238 !important; color: #fff !important; border-radius: .75rem !important; }
+		:global(.form-page-shell button[type='submit']:hover) { background: #d65391 !important; }
+		/* Keep the final save control identical to the compact mobile control. */
+		:global(.form-page-shell button[type='submit'].bounce) { width: 2.5rem !important; min-width: 2.5rem !important; height: 2.5rem !important; min-height: 2.5rem !important; margin: 0 .5rem .5rem 1rem !important; padding: 0 !important; border-radius: .7rem !important; background: #ef3f82 !important; }
+		:global(.form-page-shell button[type='submit'].bounce svg) { fill: #273238 !important; }
+		:global(.form-page-shell button[type='submit'].bounce:hover) { background: #d65391 !important; }
+		/* Desktop carousel pagination is deliberately visible beneath each form step. */
+		:global(.form-page-shell #indicators-carousel > .absolute.z-30) { display: flex !important; bottom: 1.25rem !important; z-index: 40 !important; transform: translateX(-50%) !important; }
+		:global(.form-page-shell #indicators-carousel > .absolute.z-30 button) { display: block !important; width: .7rem !important; height: .7rem !important; border-radius: 999px !important; background: #b5a69b !important; opacity: 1 !important; }
+		:global(.form-page-shell #indicators-carousel > .absolute.z-30 button.is-active) { background: #d65391 !important; transform: scale(1.25); }
+	}
 </style>

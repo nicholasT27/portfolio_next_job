@@ -53,3 +53,44 @@
     .form-page-shell > .formDivision .mt-5 input { min-height: 2.9rem; padding: .6rem .8rem !important; text-align: left !important; }
     .form-page-shell > .formDivision .mt-5 > form > button { flex: 0 0 2.75rem; width: 2.75rem !important; height: 2.75rem !important; margin: 0 0 .05rem !important; }
 }
+
+/* The desktop profile editor follows the same split-screen composition as sign-up. */
+@media (min-width: 1025px) {
+    .form-page-shell > #flip-card {
+        inset: 0 auto 0 0;
+        width: 52.5% !important;
+    }
+
+    .form-page-shell .flip-card-back { display: none !important; }
+    .form-page-shell > .formDivision {
+        top: 0 !important;
+        right: 0 !important;
+        width: 47.5% !important;
+        height: 100svh !important;
+        max-height: 100svh !important;
+        padding: clamp(2rem, 4vw, 4rem) !important;
+        transform: none !important;
+        border: 0 !important;
+        border-radius: 0 !important;
+        background: #f8eee7 !important;
+        box-shadow: none !important;
+        backdrop-filter: none !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    .form-page-shell > .formDivision > div { width: min(100%, 32rem) !important; }
+
+    /* Sign-up typography and controls. */
+    .form-page-shell > .formDivision,
+    .form-page-shell > .formDivision form { color: #273238 !important; }
+    .form-page-shell > .formDivision h2,
+    .form-page-shell > .formDivision h3,
+    .form-page-shell > .formDivision h5 { font-size: clamp(1.875rem, 3vw, 3rem) !important; font-weight: 900 !important; letter-spacing: -.055em !important; color: #273238 !important; }
+    .form-page-shell > .formDivision label,
+    .form-page-shell > .formDivision p { color: #273238 !important; }
+    .form-page-shell > .formDivision input { min-height: 3.25rem !important; border: 1px solid #d8c6b9 !important; border-radius: .75rem !important; background: #fff !important; color: #273238 !important; font-size: 1rem !important; }
+    .form-page-shell > .formDivision input::placeholder { color: #a69791 !important; }
+    .form-page-shell > .formDivision button[type='submit'] { border-radius: .75rem !important; background: #273238 !important; color: #fff !important; font-weight: 900 !important; }
+    .form-page-shell > .formDivision button[type='submit']:hover { background: #d65391 !important; }
+}

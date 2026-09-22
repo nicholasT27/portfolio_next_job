@@ -1,440 +1,121 @@
 <script>
-	import { PUBLIC_BACKEND_BASE_URL } from '$env/static/public';
-	import { authenticateUser, isAuthenticated, userIsLoggedIn } from '../../util/auth.js';
-	import { goto } from '$app/navigation';
-	import { writable } from 'svelte/store';
-	import PasswordVisibility from "../component/PasswordVisibility/PasswordVisibility.svelte"
-	import PasswordConfirmationVisibility from '../component/PasswordVisibility/PasswordConfirmationVisibility.svelte';
-	import { fileUrl, selectedFile, handleFileInputChangeOnCarousel, isUpload, handleFileInputChangeOnFlipCard, isUploadFlipCardFile} from "../component/UploadMedia/UploadMedia.js"
+  import { PUBLIC_BACKEND_BASE_URL } from '$env/static/public';
+  import { authenticateUser, userIsLoggedIn } from '../../util/auth.js';
+  import { goto } from '$app/navigation';
+  import { writable } from 'svelte/store';
+  import PasswordVisibility from '../component/PasswordVisibility/PasswordVisibility.svelte';
+  import PasswordConfirmationVisibility from '../component/PasswordVisibility/PasswordConfirmationVisibility.svelte';
+  import { fileUrl, selectedFile, handleFileInputChangeOnCarousel, isUpload } from '../component/UploadMedia/UploadMedia.js';
 
-	let isLoading = writable(false);
-	let formErrors = {};
-	let getError = writable(false);
-	let getSuccess = writable(false);
-  	let flipCardInner;
+  let isLoading = writable(false);
+  let formErrors = {};
+  let getError = writable(false);
+  let getSuccess = writable(false);
 
-	async function postSignUp() {
-		goto('/job/new');
-	}
+  // Original account creation request and automatic sign-in flow are retained.
+  async function createUser(evt) {
+    evt.preventDefault();
+    isLoading.set(true);
+    const userData = {
+      username: evt.target['username'].value,
+      profile_picture: fileUrl,
+      email: evt.target['email'].value,
+      password: evt.target['password'].value,
+      passwordConfirm: evt.target['password-confirmation'].value
+    };
+    const resp = await fetch(PUBLIC_BACKEND_BASE_URL + 'api/collections/users/records', {
+      method: 'POST', mode: 'cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(userData)
+    });
+    if (resp.status == 200) {
+      const res = await authenticateUser(userData.username, userData.password);
+      if (res.success) {
+        getError.set(false);
+        getSuccess.set(true);
+        goto('/job/new');
+      } else {
+        throw 'Sign up succeeded but authentication failed';
+      }
+    } else {
+      const res = await resp.json();
+      formErrors = res.data;
+      getError.set(true);
+    }
+    if (evt.target['password'].value != evt.target['password-confirmation'].value) {
+      formErrors['password'] = { message: 'Password confirmation does not match' };
+    }
+    isLoading.set(false);
+  }
 
-	async function createUser(evt) {
-		//prevent the page go to the top when button is clicked//
-		evt.preventDefault();
-		isLoading.set(true);
-
-		const userData = {
-			username: evt.target['username'].value,
-			profile_picture: fileUrl,
-			email: evt.target['email'].value,
-			password: evt.target['password'].value,
-			passwordConfirm: evt.target['password-confirmation'].value
-		};
-
-		//create and insert the new user data into database//
-		const resp = await fetch(PUBLIC_BACKEND_BASE_URL + 'api/collections/users/records', {
-			method: 'POST',
-			mode: 'cors',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify(userData)
-		});
-		if (resp.status == 200) {
-			const res = await authenticateUser(userData.username, userData.password);
-			if (res.success) {
-				postSignUp();
-				getError.set(false);
-				getSuccess.set(true);
-			} else {
-				throw 'Sign up succeeded but authentication failed';
-			}
-		} else {
-			const res = await resp.json();
-			formErrors = res.data;
-			getError.set(true);
-		}
-		// Check for password confirmation error after API call is completed
-		if (evt.target['password'].value != evt.target['password-confirmation'].value) {
-			formErrors['password'] = { message: 'Password confirmation does not match' };
-		}
-		isLoading.set(false);
-	}
-
-	function closeWindow() {
-		getError.set(false);
-		getSuccess.set(false);
-	}
-
-	if(isAuthenticated == false){
-		setTimeout(function () {
-			document.querySelector('.warningMessageSlideRight').remove();
-		}, 5000);
-	}
-
-	function flip() {
-		flipCardInner = document.getElementById('flip-card-inner');
-
-		flipCardInner.style.cssText = "-o-transform: rotateY(0); -webkit-transform: rotateY(0); -ms-transform: rotateY(0); transform: rotateY(0);";
-	}
-
-	function flipBack() {
-		flipCardInner = document.getElementById('flip-card-inner');
-
-		flipCardInner.style.cssText = "-o-transform: rotateY(-180deg); -webkit-transform: rotateY(-180deg); -ms-transform: rotateY(-180deg); transform: rotateY(-180deg);";
-	}
+  function closeWindow() { getError.set(false); getSuccess.set(false); }
 </script>
 
 <svelte:head>
-	<title>Sign Up | Next Jobs</title>
-	<script src="/aws-sdk-s3.min.js"></script>
+  <title>Join free | Next Jobs</title>
+  <script src="/aws-sdk-s3.min.js"></script>
 </svelte:head>
 
-<div class="form-page-shell flex h-screen w-screen">
-	<a class="form-home-nav" href="/Home">← Home</a>
-	<!-- Sign Up Section -->
-	<div id="flip-card" class="sm:w-6/12 w-full h-full">
-		<div id="flip-card-inner" class="flip-card-inner">
-			<div class="flip-card-front w-full h-full">
-				<!-- If isAuthenticated is false, show this warning message -->
-					{#if $userIsLoggedIn == true}
-						<div
-							class="text-lg flex absolute top-2 warningMessageSlideRight items-center p-4 text-yellow-800 rounded-lg bg-yellow-50"
-						>
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								class="stroke-current shrink-0 h-6 w-6"
-								fill="none"
-								viewBox="0 0 24 24"
-								><path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-									d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
-								/></svg
-							>
-							<span>Please sign up first before proceed to post new job page</span>
-						</div>
-					{/if}
+<!-- Layout-only account page; original PocketBase and photo-upload flow is retained. -->
+<main class="grid min-h-screen bg-[#f8eee7] lg:grid-cols-[1.05fr_.95fr]">
+  <section class="relative hidden overflow-hidden bg-[url('/rift-job-hero.png')] bg-cover bg-[62%_top] p-12 text-white lg:grid lg:content-between">
+    <div class="absolute inset-0 bg-[#273238]/40"></div>
+    <a href="/Home" class="relative text-lg font-black tracking-[0.14em]">Home</a>
+    <div class="relative max-w-md pb-10">
+      <p class="text-xs font-black uppercase tracking-[0.18em]">Careers, made clearer</p>
+      <h1 class="mt-5 text-6xl font-black leading-[.93] tracking-[-.06em]">Find the role that fits.</h1>
+      <p class="mt-6 text-lg font-bold">Create your free profile, save promising roles, and post opportunities.</p>
+    </div>
+  </section>
 
-				<button
-					on:click={flipBack}
-					class="flex block sm:hidden absolute bottom-0 right-0 m-5 text-3xl font-bold text-gray-200"
-				>
-					Next
-					<svg
-						class="w-6 h-6 mt-2 ml-1"
-						aria-hidden="true"
-						xmlns="http://www.w3.org/2000/svg"
-						fill="none"
-						viewBox="0 0 8 14"
-					>
-						<path
-							stroke="currentColor"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width="2"
-							d="m1 13 5.7-5.326a.909.909 0 0 0 0-1.348L1 1"
-						/>
-					</svg>
-				</button>
-				<div
-					class="absolute text-gray-200 m-2 left-14 top-72 sm:top-52 text-5xl font-bold slideRight"
-				>
-					<div class="flex">
-						<a href="/Home" class="text-3xl sm:text-xl mb-3 hover:underline">Home</a>
-						<svg
-							class="w-4 h-4 text-gray-200 ml-2 mt-3 sm:mt-2"
-							aria-hidden="true"
-							xmlns="http://www.w3.org/2000/svg"
-							fill="none"
-							viewBox="0 0 8 14"
-						>
-							<path
-								stroke="currentColor"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="2"
-								d="m1 13 5.7-5.326a.909.909 0 0 0 0-1.348L1 1"
-							/>
-						</svg>
-					</div>
-					<h1>Sign Up</h1>
-					<p class="form-page-intro">Your next opportunity<br />starts with one step.</p>
-					<p class="form-page-note">Create your profile and make the next move yours.</p>
-				</div>
-				<!-- Image div -->
-				<img src="background-img4.png" alt="" class="w-full h-full object-cover" />
-			</div>
-		</div>
-	</div>
+  <section class="grid content-center px-6 py-12 sm:px-12 lg:px-16">
+    <div class="mx-auto w-full max-w-md">
+      <a href="/Home" class="text-sm font-black tracking-[0.13em] text-[#273238] lg:hidden">← Home</a>
+      <p class="mt-8 text-xs font-black uppercase tracking-[0.16em] text-[#d65391]">Create an account</p>
+      <h1 class="mt-3 text-5xl font-black tracking-[-.055em] text-[#273238]">Join free</h1>
+      <p class="mt-3 text-[#786a66]">It only takes a minute to get started.</p>
 
-	<!-- Form div -->
-	<!-- Outer div -->
-	<div
-		class="border border-black flex items-center justify-center w-7/12 formDivision bg-gradient-to-br from-pink-500 to-orange-400"
-	>
+      {#if $userIsLoggedIn}
+        <div class="mt-6 rounded-xl border border-[#d65391]/30 bg-white p-4 text-sm font-semibold text-[#273238]">Create an account to post a new job.</div>
+      {/if}
+      {#if $getError}
+        <div class="mt-6 flex gap-3 rounded-xl border border-[#d65391]/30 bg-white p-4 text-sm text-[#273238]" role="alert">
+          <span>{formErrors.username?.message || formErrors.email?.message || formErrors.password?.message || 'We could not create your account. Please review the details and try again.'}</span>
+          <button on:click={closeWindow} class="ml-auto font-black text-[#d65391]" aria-label="Dismiss message">×</button>
+        </div>
+      {/if}
 
-		<!-- If getError, show the warning message -->
-		{#if $getError}
-			<div
-				class="border border-black flex absolute top-2 left-1 items-center p-4 text-yellow-800 rounded-lg bg-yellow-50"
-				role="alert"
-			>
-				<svg
-					class="flex-shrink-0 w-4 h-4"
-					aria-hidden="true"
-					xmlns="http://www.w3.org/2000/svg"
-					fill="currentColor"
-					viewBox="0 0 20 20"
-				>
-					<path
-						d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
-					/>
-				</svg>
-				<span class="sr-only">Info</span>
-				<div class="ml-3 text-sm font-medium pr-2">
-					{#if 'username' in formErrors}
-						Warning: {formErrors['username'].message}
-					{:else if 'email' in formErrors}
-						Warning: {formErrors['email'].message}
-					{:else if 'password' in formErrors}
-						Warning: {formErrors['password'].message}
-					{:else}
-						Warning: ''
-					{/if}
-				</div>
-				<button
-					on:click={closeWindow}
-					type="button"
-					class="ml-auto -mx-1.5 -my-1.5 bg-yellow-50 text-yellow-500 rounded-lg focus:ring-2 focus:ring-yellow-400 p-1.5 hover:bg-yellow-200 inline-flex items-center justify-center h-8 w-8"
-					data-dismiss-target="#alert-2"
-					aria-label="Close"
-				>
-					<span class="sr-only">Close</span>
-					<svg
-						class="w-3 h-3"
-						aria-hidden="true"
-						xmlns="http://www.w3.org/2000/svg"
-						fill="none"
-						viewBox="0 0 14 14"
-					>
-						<path
-							stroke="currentColor"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width="2"
-							d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
-						/>
-					</svg>
-				</button>
-			</div>
-		{/if}
+      <form class="mt-8 space-y-5" on:submit={createUser}>
+        <label class="block text-sm font-black text-[#273238]" for="username">
+          Username
+          <input id="username" type="text" name="username" placeholder="Your username" required class="mt-2 w-full rounded-xl border border-[#d8c6b9] bg-white px-4 py-3.5 text-base font-normal outline-none transition placeholder:text-[#a69791] focus:border-[#d65391] focus:ring-2 focus:ring-[#d65391]/15" />
+        </label>
 
-		<!-- If success sign up show success notification -->
-		{#if $getSuccess}
-			<div
-				class="border border-black flex absolute top-2 left-1 items-center p-4 text-green-800 rounded-lg bg-green-50"
-				role="alert"
-			>
-				<svg
-					class="w-4 h-4 text-gray-800"
-					aria-hidden="true"
-					xmlns="http://www.w3.org/2000/svg"
-					fill="none"
-					viewBox="0 0 16 12"
-				>
-					<path
-						stroke="currentColor"
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						stroke-width="2"
-						d="M1 5.917 5.724 10.5 15 1.5"
-					/>
-				</svg>
-				<span class="sr-only">Info</span>
-				<div class="ml-3 text-sm font-medium pr-2">User successfully sign up !</div>
-				<button
-					on:click={closeWindow}
-					type="button"
-					class="ml-auto -mx-1.5 -my-1.5 bg-green-50 text-green-500 rounded-lg focus:ring-2 focus:ring-green-400 p-1.5 inline-flex items-center justify-center h-8 w-8"
-					data-dismiss-target="#alert-2"
-					aria-label="Close"
-				>
-					<span class="sr-only">Close</span>
-					<svg
-						class="w-3 h-3"
-						aria-hidden="true"
-						xmlns="http://www.w3.org/2000/svg"
-						fill="none"
-						viewBox="0 0 14 14"
-					>
-						<path
-							stroke="currentColor"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width="2"
-							d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
-						/>
-					</svg>
-				</button>
-			</div>
-		{/if}
+        <div>
+          <span class="block text-sm font-black text-[#273238]">Profile picture <span class="font-normal text-[#786a66]">(optional)</span></span>
+          <div class="mt-2 flex items-center gap-3 rounded-xl border border-dashed border-[#d8c6b9] bg-white p-3">
+            {#if $isUpload}
+              <img src={$selectedFile} class="h-10 w-10 rounded-full object-cover" alt="Selected profile" />
+            {:else}
+              <div class="grid h-10 w-10 place-items-center rounded-full bg-[#f8eee7] font-black text-[#786a66]">+</div>
+            {/if}
+            <label for="file-upload" class="cursor-pointer text-sm font-black text-[#273238] underline decoration-[#d65391] decoration-2 underline-offset-4">
+              Add profile picture
+              <input type="file" name="file-upload" class="sr-only" id="file-upload" on:change={handleFileInputChangeOnCarousel} accept=".jpg, .jpeg, .png" />
+            </label>
+            <span class="ml-auto max-w-[8rem] truncate text-xs text-[#786a66]">{$selectedFile.slice(0, 18)}</span>
+          </div>
+        </div>
 
-		<!-- Inner div -->
-		<div class="flex w-9/12 h-full items-center justify-center ml-10 slide-down">
-			<!-- Form section -->
-			<div
-				class="w-full p-5 max-w-sm bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-5 overflow-y-auto createUserWindow"
-			>
-				<form class="space-y-3" on:submit={createUser}>
-					<div class="flex">
-						<svg
-							version="1.1"
-							id="Capa_1"
-							xmlns="http://www.w3.org/2000/svg"
-							xmlns:xlink="http://www.w3.org/1999/xlink"
-							x="0px"
-							y="0px"
-							width="50px"
-							height="50px"
-							viewBox="0 0 511.626 511.627"
-							style="enable-background:new 0 0 511.626 511.627;"
-							xml:space="preserve"
-							class="fill-gray-200 p-2"
-						>
-							<g>
-								<g>
-									<path
-										d="M319.77,338.039c0,4.949-1.811,9.236-5.424,12.847c-3.617,3.621-7.902,5.428-12.851,5.428h-91.361
-			                            c-4.952,0-9.233-1.807-12.85-5.428c-3.616-3.61-5.424-7.897-5.424-12.847V292.36H0v137.044c0,12.56,4.471,23.312,13.418,32.257
-			                            c8.945,8.946,19.701,13.419,32.264,13.419h420.266c12.56,0,23.315-4.473,32.261-13.419c8.949-8.945,13.418-19.697,13.418-32.257
-			                            V292.36H319.77V338.039L319.77,338.039z"
-									/>
-									<rect x="219.266" y="292.36" width="73.096" height="36.545" />
-									<path
-										d="M498.208,123.054c-8.945-8.947-19.701-13.418-32.261-13.418H365.446V63.953c0-7.614-2.663-14.084-7.994-19.414
-			                            c-5.325-5.327-11.8-7.993-19.411-7.993H173.589c-7.612,0-14.083,2.666-19.414,7.993s-7.994,11.799-7.994,19.414v45.683H45.682
-			                            c-12.562,0-23.318,4.471-32.264,13.418C4.471,132,0,142.75,0,155.313v109.636h511.626V155.313
-			                            C511.626,142.75,507.158,132,498.208,123.054z M328.904,109.636H182.725V73.089h146.179V109.636z"
-									/>
-								</g>
-							</g>
-							<g />
-							<g />
-							<g />
-							<g />
-							<g />
-							<g />
-							<g />
-							<g />
-							<g />
-							<g />
-							<g />
-							<g />
-							<g />
-							<g />
-							<g />
-						</svg>
-						<h5 class="text-xl font-medium text-gray-900 flex items-center">
-							Create Account
-						</h5>
-					</div>
+        <label class="block text-sm font-black text-[#273238]" for="email">
+          Email
+          <input id="email" type="email" name="email" placeholder="you@example.com" required class="mt-2 w-full rounded-xl border border-[#d8c6b9] bg-white px-4 py-3.5 text-base font-normal outline-none transition placeholder:text-[#a69791] focus:border-[#d65391] focus:ring-2 focus:ring-[#d65391]/15" />
+        </label>
 
-					<!-- username section -->
-					<div>
-						<label
-							for="username"
-							class="block pb-1 text-sm font-medium text-gray-900"
-							>Your Username</label
-						>
-						<input
-							type="text"
-							name="username"
-							class="bg-white border border-gray-300 text-gray-900 text-sm rounded-full focus:ring-pink-600 focus:border-pink-600 block w-full p-2.5"
-							placeholder="John Doe"
-							required
-							id="username"
-						/>
-						<div class="mt-2 flex items-center gap-x-3">
-							{#if $isUpload == true}
-								<img src="{$selectedFile}" class="w-10 h-10 object-cover rounded-full" alt="" />
-							{:else}
-								<div class="border p-3 rounded-full bg-gray-200 my-1">
-									<svg
-										class="rounded-full cursor-pointer w-6 h-6 text-gray-400"
-										fill="currentColor"
-										viewBox="0 0 20 20"
-										xmlns="http://www.w3.org/2000/svg"
-										><path
-											fill-rule="evenodd"
-											d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-											clip-rule="evenodd"
-										/></svg
-									>
-								</div>
-							{/if}
+        <PasswordVisibility />
+        <PasswordConfirmationVisibility />
 
-							<label
-								for="file-upload"
-								class="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-							>
-								<input
-									type="file"
-									name="file-upload"
-									class="sr-only"
-									id="file-upload"
-									on:change={handleFileInputChangeOnCarousel}
-									accept=".jpg, .jpeg, .png"
-								/>
-								<span>Add Profile Picture</span>
-							</label>
-							<label for="file-upload" class="text-gray-500 h-4 flex items-center"
-								>{$selectedFile.slice(0,20)}</label
-							>
-						</div>
-					</div>
-
-					<!-- email section -->
-					<div>
-						<label for="email" class="block pb-1 text-sm font-medium text-gray-900"
-							>Your Email</label
-						>
-						<input
-							type="email"
-							name="email"
-							placeholder="johndoe@example.com"
-							class="bg-white border border-gray-300 text-gray-900 text-sm rounded-full focus:ring-pink-600 focus:border-pink-600 block w-full p-2.5"
-							required
-							id="email"
-						/>
-					</div>
-
-					<PasswordVisibility />
-					
-					<PasswordConfirmationVisibility />
-
-					<button
-						type="submit"
-						class="w-full text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-					>
-						{#if $isLoading}
-							<span class="loading loading-dots loading-sm" />
-						{:else}
-							<span>Create New Account</span>
-						{/if}
-					</button>
-
-					<div class="text-sm font-medium text-gray-500">
-						Registered? <a href="/login" class="text-pink-600 hover:underline"
-							>Log in HERE</a
-						>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-</div>
-
-<style>
-	@import '../sign-up/+page.css';
-</style>
+        <button type="submit" disabled={$isLoading} class="flex w-full items-center justify-center rounded-xl bg-[#273238] px-5 py-4 font-black text-white transition hover:bg-[#d65391] disabled:cursor-wait disabled:opacity-60">{$isLoading ? 'Creating account…' : 'Create account'}</button>
+      </form>
+      <p class="mt-7 text-center text-sm text-[#786a66]">Already registered? <a href="/login" class="font-black text-[#273238] underline decoration-[#d65391] decoration-2 underline-offset-4">Log in</a></p>
+    </div>
+  </section>
+</main>
